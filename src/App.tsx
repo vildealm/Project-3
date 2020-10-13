@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { List } from './List/List';
-import { Filter } from './Filter/Filter';
+import { List } from './Components/List/List';
+import { Filter } from './Components/List/Filter/Filter';
 
 function App() {
   return (
