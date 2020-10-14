@@ -2,21 +2,23 @@
 // defines functions that tells to the store what to store. 
 
 
- const defaultState = {
+
+ /*const defaultState = {
     currentPerson: {}
-}
+}*/
 
 
-function Reducer( state = defaultState, action: any){
+function Reducer(){
+    return [1, "Almestad", "Vilde", 23, "Trondheim"];
     
-    switch(action.type){
+    /*switch(action.type){
         case "SET_PERSON":
             return{
                 ...state, 
                 currentPerson: action.payload
             }
             default: return state
-    }
+    }*/
 }
 
 
