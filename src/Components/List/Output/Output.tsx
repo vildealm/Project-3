@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
-import './List.css';
+import './Output.css';
 
 
 
- export const List = () => {
+export const Output = () => {
 
     const [lastName, setLastName] = useState("Almestad");
 
 return(
-    <div>
-          <button onClick={() => setLastName("Bø")}> Endre navn </button>
+    <div></div>
+    /** 
+    <div>   
+         <button onClick={() => setLastName("Bø")}> Endre navn </button>
 
+        
         <ul className="list">
           <li> {lastName}</li>
           <li>{lastName} </li>
           <li> {lastName} </li>
         </ul>
+       
     </div>
+
+  */
 );
 
 }
