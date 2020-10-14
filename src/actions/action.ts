@@ -1,6 +1,7 @@
 
 
 export const ADD_PERSON = 'ADD_PERSON'
+export const SET_PERSON = 'SET_PERSON'
 
 
 
