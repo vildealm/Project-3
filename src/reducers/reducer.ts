@@ -7,6 +7,14 @@
     currentPerson: {}
 }*/
 
+ interface Persons {
+    id: number; 
+    last_name: string; 
+    first_name: string; 
+    age: number; 
+    location: string; 
+}
+
 
 function Reducer(){
     return [1, "Almestad", "Vilde", 23, "Trondheim"];
