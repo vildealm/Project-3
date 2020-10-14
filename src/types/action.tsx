@@ -1,4 +1,4 @@
-//define each action as a variable and the type. 
+//define each action as a variable and the type. comment
 
 import { Persons } from "./Persons";
 
