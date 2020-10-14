@@ -1,5 +1,7 @@
 //define each action as a variable and the type. 
 
+import { Persons } from "./Persons";
+
 export const ADD_PERSONS = "ADD_PERSONS"
 
 export interface AddPersonsAction {
