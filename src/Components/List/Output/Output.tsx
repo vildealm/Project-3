@@ -12,7 +12,6 @@ return(
     /** 
     <div>   
          <button onClick={() => setLastName("Bø")}> Endre navn </button>
-
         
         <ul className="list">
           <li> {lastName}</li>

@@ -8,9 +8,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Visage Lexicon </h1>
+        <h1> Finder </h1>
         <Search/>
-        <Dropdown/>
+        <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
+        <Dropdown filter="Age" options={["16-20", "21-25", "26-30", "30-35", "36-40"]}/>
         <Output/>
         
       </header>
