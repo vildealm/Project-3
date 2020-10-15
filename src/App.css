@@ -1,16 +1,45 @@
 .App {
   text-align: center;
+
 }
 
+.header { grid-area: header; }
+.search { grid-area: search }
+.main { grid-area: main; }
+.addPerson {grid-area: addPerson; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+
+.grid-container > div{
+  display: grid; 
+
+  grid-template-areas: "header header "
+                        "search search "
+                        "main main "
+                        "addPerson addPerson "
+   ;
+  
+   background-color: #282c34;
+  padding: 0.5em;  
   font-size: calc(10px + 2vmin);
   color: white;
+  justify-content: center;
   
+}
+ .header {
+   grid-area: "header";
+ }
+.grid-search {
+  grid-area: "search";
+}
+.grid-dropdown{
+  grid-area: "main";
+}
+.grid-output{
+  grid-area: "main";
+
+}
+.grid-addPerson{
+  grid-area: "addPerson";
+
 }

@@ -4,12 +4,21 @@ import { connect } from 'tls';
 
 
 
+
  export function Dropdown (props: any) {
 
-    let filter : any = props.filter;
-    let options : any = props.options;
-  
 
+    let options : any = props.options;
+    let length : any = props.options.length;
+
+    function getOptions(){
+        {
+           for (var i = 1; i <= length; i++) {
+            }
+
+       }
+
+   }
    
     function getAveiro(){
         
@@ -28,10 +37,12 @@ return(
 <div className="dropdown">
   <button className="dropButton"> {props.filter} </button>
   <div className="dropdownContent">
-    <a href="#" onClick = {getAveiro}>{options[0]}</a>
-    <a href="#" onClick = {getTrondheim}>{options[1]}</a>
-    <a href="#" onClick = {getWashington}>{options[2]}</a>
+      {options.map(function(item: any){
+          return <a href="#" onClick = {getAveiro}>{item}</a>;
+      })}
+   
   </div>
+
 </div>
 
 

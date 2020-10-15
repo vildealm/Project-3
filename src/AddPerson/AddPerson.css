@@ -1,0 +1,15 @@
+.addButton{
+    margin-top: 5%;
+    box-sizing: border-box;
+    border: 2px solid rgb(65, 128, 170);
+    font-size: 16px;
+    background-color: rgb(65, 128, 170);
+    background-position: 10px 10px; 
+    padding: 20px 40px 20px 40px;
+  }
+  .addButton:hover{
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  
+  
