@@ -22,16 +22,31 @@ column: number;
 
 interface IQuery {
 __typename: "Query";
-hello: string;
-getLocation: string | null;
+nameSearch: Array<IPerson | null> | null;
+persons: Array<IPerson>;
+filterSearch: Array<IPerson | null> | null;
 }
 
-interface IHelloOnQueryArguments {
-name?: string | null;
+interface INameSearchOnQueryArguments {
+name: string;
 }
 
-interface IGetLocationOnQueryArguments {
+interface IFilterSearchOnQueryArguments {
+filter?: IPersonFilter | null;
+}
+
+interface IPerson {
+__typename: "Person";
+id: number;
+last_name: string;
+first_name: string;
+age: number;
 location: string;
+}
+
+interface IPersonFilter {
+age?: number | null;
+location?: string | null;
 }
 
 interface IMutation {
