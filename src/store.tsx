@@ -1,4 +1,10 @@
 import { create } from 'domain';
-import {createStore} from 'redux'; 
+import {applyMiddleware, createStore} from 'redux'; 
+import {personReducer} from './reducers/reducer'; 
+import thunk from 'redux-thunk';
+import rootReducer from './rootReducer';
 
-export const store = createStore(); 
+
+const middlewares = [thunk];
+const store = createStore(rootReducer,applyMiddleware(...middlewares)); 
+
