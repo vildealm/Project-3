@@ -5,10 +5,7 @@ import './AddPerson.css';
     
 
 return(
-    <div>
-      <button className = "addButton"> + Add person </button>
-    </div>
-      
+      <button className = "addButton">+ Add person</button>
 );
  }
 
