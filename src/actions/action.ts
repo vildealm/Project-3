@@ -40,6 +40,14 @@ export const fetchPersonsFailure= (error: Error) =>  {
     }
 }
 
+export const searchValue = (person: PersonState) => {
+  console.log("search payload: " + person);
+  return{
+      type: 'SEARCH',
+      payload: person
+  }
+}
+
 
 
 
