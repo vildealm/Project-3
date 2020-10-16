@@ -10,19 +10,16 @@ interface DispatchProps {
 }
 
 type Props = DispatchProps
-const { error, loading, products } = Props;
 
-export const Dropdown = (dispatch: ThunkDispatch<{}, {}, any>): DispatchProps => {
+export const Dropdown = (dispatch: DispatchProps) => {
   return (
-
     <div className="dropdown">
-
       <button className="dropButton"> City </button>
       <div className="dropdownContent">
     <ul>
-          {products.map(person =>
-            <li key={person.id}>{person.firstname}</li>
-          )}
+          
+      <li key={person.id}>{props.person.firstname}</li>
+        
         </ul>
 
       </div>
@@ -32,14 +29,7 @@ export const Dropdown = (dispatch: ThunkDispatch<{}, {}, any>): DispatchProps =>
   );
 }
 
-
-const mapStateToProps = state => ({
-  products: state.products.items,
-  loading: state.products.loading,
-  error: state.products.error
-});
-
-export default connect(mapStateToProps)(Dropdown);
+export default Dropdown;
 
 
 /* <a href="#">Trondheim</a>

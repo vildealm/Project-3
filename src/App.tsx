@@ -3,22 +3,34 @@ import './App.css';
 import { Dropdown } from './Dropdown/Dropdown';
 import { Output } from './Components/List/Output/Output';
 import { Search } from './Components/List/Search';
-import {PersonState} from './reducers/reducer'; 
+import { PersonState } from './reducers/reducer';
+import { success, failure, begin, searchValue } from './actions/action';
+
+const PERSON_API_URL = ``;
 
 
-function App() {
-  const persons = useSelector<PersonState, PersonState[""]>(); 
+const App = (props) => {
+  const fetchUrl = (url) => {
+    props.begin();
+    fetch(url)
+      .then(response => response.json())
+      .then(jsonResponse => {
+        props.success(jsonResponse.docs);
+      });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1> Visage Lexicon </h1>
-        <Search/>
-        <Dropdown/>
-        <ul>
-          {persons}
-        </ul>
-        <Output/>
-        
+        <Search />
+        <Dropdown 
+          loading={props.loading}
+          movies={props.movies}
+          errorMessage={props.errorMessage}
+          />
+        <Output />
+
       </header>
     </div>
   );
