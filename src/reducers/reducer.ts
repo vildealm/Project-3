@@ -2,21 +2,13 @@
 // defines functions that tells to the store what to store. 
 import {FETCH_PRODUCTS_BEGIN, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE} from '../actions/action';
 
-export interface PersonState {
-    id:number;
-    firstname:String;
-    lastname:String;
-    age:number;
-    location:String;
-}
-
 const initialState = {
     persons: [], 
     loading: false, 
     error: null,
 }
 
-export function reducer(state = initialState, action: any): PersonState {
+export function rootReducer(state = initialState, action: any) {
     switch(action.type) {
         case FETCH_PRODUCTS_BEGIN: 
             return {
@@ -43,4 +35,4 @@ export function reducer(state = initialState, action: any): PersonState {
 }
 
 
-export default reducer;
+export default rootReducer;
