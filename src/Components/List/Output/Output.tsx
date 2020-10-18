@@ -1,28 +1,10 @@
-import React, { useState } from 'react';
-import './Output.css';
+import React from 'react'
 
-
-
-export const Output = () => {
-
-    const [lastName, setLastName] = useState("Almestad");
-
-return(
-    <div></div>
-    /** 
-    <div>   
-         <button onClick={() => setLastName("Bø")}> Endre navn </button>
-
-        
-        <ul className="list">
-          <li> {lastName}</li>
-          <li>{lastName} </li>
-          <li> {lastName} </li>
-        </ul>
-       
+const Output = () => {
+  return (
+    <div>
+      Tester!
     </div>
-
-  */
-);
-
+  )
 }
+export default Output; 

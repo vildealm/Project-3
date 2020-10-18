@@ -1,16 +1,11 @@
-import {configure} from 'redux-data-fetching';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import { rootReducer } from "./reducers/reducer";
+import thunkMiddleware from "redux-thunk";
 
-const rootValue = {
-  user: ({id}) => api.getMutation(id),
-  users: () => api.getUsers()
-};
+export const store = applyMiddleware(
+  thunkMiddleware
+)(createStore)
 
-let {reducer, middleware, actions, DataFetcher, DataHandlers} = configure(graphQLSchema, {somecontext: "ok", api: {}}, rootValue);
-
-createStore(combineReducers({
-  data: reducer,
-}), {}, compose(
-  applyMiddleware(middleware)
-));
-
-export { actions, DataFetcher, DataHandlers };
