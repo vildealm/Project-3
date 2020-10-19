@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import './Search.css';
 import { connect } from 'tls';
 
-
-
  export const Search = () => {
-
-    
-
 return(
     <div>
       <input className="search" name="search" placeholder="Search.."></input>
@@ -16,3 +11,4 @@ return(
       
 );
  }
+
