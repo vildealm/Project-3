@@ -1,24 +1,27 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
-
-.dropdown {
+.dropdown{
+  width: 65vh;
+  display: flex;
+  flex-direction: row;
+  
 }
-.dropButton {
 
+.formcontroll-container{
+  width: 30%;
+}
+/*
+.dropButton {
     background-color: #ce8e46;
     color: white;
     padding: 0.8em 2em 0.8em 2em;
     margin: 0.2em 0.2em 0.2em 0em;
-
     font-size: 16px;
     border: none;
-  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
-  
-  .dropButton {
-    position: relative;
-    display: inline-block;
-  }
-  
+  */
   .dropdownContent {
     display: none;
     position: absolute;

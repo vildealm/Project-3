@@ -16,20 +16,16 @@
   grid-template-areas: "header header "
                         "search search "
                         "main main "
-                        "addPerson addPerson  "
+                        "addPerson addPerson  ";
 
-   ;
-
-  
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: white;
-  justify-content: center;
-  
+  justify-content: center; 
 }
+
  .header {
    grid-area: "header";
-  
  }
 .grid-search {
   grid-area: "search";
@@ -39,9 +35,7 @@
 }
 .grid-output{
   grid-area: "main";
-
 }
 .grid-addPerson{
   grid-area: "addPerson";
-
 }
