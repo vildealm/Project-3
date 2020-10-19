@@ -3,23 +3,27 @@
   }
 
   .search{
-  margin:2px;
+  margin-bottom: 0;
+  padding: 12px 20px 12px 20px;
   box-sizing: border-box;
   border: 2px solid white;
   border-radius: 20px;
   font-size: 16px;
   background-color: white;
   background-position: 10px 10px; 
-  padding: 12px 20px 12px 20px;
+  
   }
   .search_button{
     margin-left:10px;
   box-sizing: border-box;
-  border: 2px solid rgb(65, 128, 170);
+  border: 2px solid #d2d3c9;
   font-size: 16px;
-  background-color: rgb(65, 128, 170);
+  background-color: #d2d3c9;
   background-position: 10px 10px; 
   padding: 10px 20px 10px 20px;
+  box-shadow: 1px 1px 2px #1a1b1d;
+  border-radius: 100px;
+
   }
   .search_button:hover{
     cursor: pointer;
