@@ -1,8 +1,7 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
 .dropdown{
   width: 65vh;
-  display: flex;
-  flex-direction: row;
+  text-align: center;
   
 }
 

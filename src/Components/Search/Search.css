@@ -1,14 +1,12 @@
 
   .search{
-  padding: 12px 20px 12px 20px;
-  width: 50vh; 
-  border: 2px solid white;
   border-radius: 20px;
   font-size: 16px;
-  background-color: white;
   background-position: 10px 10px; 
-  
   }
+.search-container{
+  text-align: center;
+}
   .search_button{
   margin-left:10px;
   box-sizing: border-box;
