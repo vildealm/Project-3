@@ -3,15 +3,35 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { gql } from '@apollo/client';
+
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+  cache: new InMemoryCache()
+});
+
+client
+  .query({
+    query: gql`
+      query GetRates {
+        rates(currency: "USD") {
+          currency
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
 
 
 ReactDOM.render(
   <React.StrictMode>  
+    <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+    </ApolloProvider>
+  </React.StrictMode>, 
     document.querySelector('.app-container')
-
 
 );
 

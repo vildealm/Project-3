@@ -5,6 +5,7 @@ import { Output } from './Components/List/Output/Output';
 import { Search } from './Components/List/Search';
 import { AddPerson } from './AddPerson/AddPerson';
 
+
 function App() {
   return (
       <div className="grid-container">
