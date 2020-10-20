@@ -4,6 +4,7 @@ import { Dropdown } from './Dropdown/Dropdown';
 import { Output } from './Components/List/Output/Output';
 import { Search } from './Components/List/Search';
 import { AddPerson } from './AddPerson/AddPerson';
+import Launcher from './Launcher';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
          <Dropdown filter="Age" options={["20-22", "23-25", "26-28", "29-31", "32-34", "35-37", "38-40"]}/>
         </div>
         <div className = "grid-output"><Output/></div>
+        <div><Launcher/></div>
         <div className = "grid-addPerson"><AddPerson/></div>
       </div>
   );

@@ -2,27 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
 import * as serviceWorker from './serviceWorker';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { gql } from '@apollo/client';
 
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
-  cache: new InMemoryCache()
+  uri: 'http://localhost:4000/graphql'
 });
 
-client
-  .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
+
 
 
 ReactDOM.render(
