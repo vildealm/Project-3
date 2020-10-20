@@ -4,9 +4,9 @@ import { FormControl, MenuItem, Select, InputLabel, makeStyles } from '@material
 
 const useStyles = makeStyles((theme: any) => ({
     underline: {
-        color: 'red',
+        color: '#ce8e46',
         '&::after': {
-            borderBottom: '2px solid #ce8e46'
+            borderBottom: '2px solid #ce8e46',
         },
         '&::before': {
             borderBottom: '2px solid #ce8e46'
@@ -41,8 +41,9 @@ export function Dropdown(props: any) {
       }*/
 
     return (
-        <div className="dropdown">
-            <FormControl className="formcontroll-container">
+        <div>
+            <div className="dropdown1"> 
+            <FormControl className="formcontroll-container" style={{margin: '0px 7px'}}>
                 <InputLabel classes={{ root: classes.inputLabelRoot }}>Age</InputLabel>
                 <Select
                     className={classes.underline}
@@ -56,6 +57,39 @@ export function Dropdown(props: any) {
                     <MenuItem value={30}>50-70</MenuItem>
                 </Select>
             </FormControl>
+            <FormControl className="formcontroll-container"style={{margin: '0px 7px'}}>
+                <InputLabel classes={{ root: classes.inputLabelRoot }}>Location</InputLabel>
+                <Select
+                    className={classes.underline}
+                    id="select-location"
+                    placeholder="Location"
+                    onChange={handleChange}
+                >
+                    <MenuItem value={10}>Trondheim</MenuItem>
+                    <MenuItem value={20}>Paris</MenuItem>
+                    <MenuItem value={30}>Juba</MenuItem>
+                </Select>
+            </FormControl>
+            <FormControl className="formcontroll-container"style={{margin: '0px 7px '}}>
+                <InputLabel classes={{ root: classes.inputLabelRoot }}>Sort by</InputLabel>
+                <Select
+                    className={classes.underline}
+                    id="select-sort-after"
+                    label="Sort After"
+                    onChange={handleChange}
+                >
+                    <MenuItem value={10}>Alphabetically</MenuItem>
+                    <MenuItem value={20}>Newest Member</MenuItem>
+                    <MenuItem value={30}>Oldest Member</MenuItem>
+                </Select>
+            </FormControl>
+            </div> 
+        </div>
+    );
+}
+
+/*
+            <div className="dropdown1"> 
             <FormControl className="formcontroll-container">
                 <InputLabel classes={{ root: classes.inputLabelRoot }}>Location</InputLabel>
                 <Select
@@ -69,6 +103,8 @@ export function Dropdown(props: any) {
                     <MenuItem value={30}>Juba</MenuItem>
                 </Select>
             </FormControl>
+            </div>
+            <div className="dropdown1"> 
             <FormControl className="formcontroll-container">
                 <InputLabel classes={{ root: classes.inputLabelRoot }}>Sort by</InputLabel>
                 <Select
@@ -82,12 +118,7 @@ export function Dropdown(props: any) {
                     <MenuItem value={30}>Oldest Member</MenuItem>
                 </Select>
             </FormControl>
-            <div className="dropdownContent">
-
-            </div>
-        </div>
-    );
-}
+            </div> */ 
 
 
 /* <button className="dropButton"> {props.filter} </button>

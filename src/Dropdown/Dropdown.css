@@ -1,15 +1,11 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
-.dropdown{
-  width: 65vh;
-  text-align: center;
-  
-}
+
 
 .formcontroll-container{
-  width: 30%;
+  width:30vh;
 }
 /*
-.dropButton {
+.dropdown{
     background-color: #ce8e46;
     color: white;
     padding: 0.8em 2em 0.8em 2em;
@@ -20,7 +16,7 @@
     flex-direction: column;
     justify-content: space-around;
   }
-  */
+
   .dropdownContent {
     display: none;
     position: absolute;
@@ -42,4 +38,4 @@
   
   .dropdown:hover .dropdownContent {display: block;}
   
-  .dropdown:hover .dropButton {background-color: #ce8f469f;}
+  .dropdown:hover .dropButton {background-color: #ce8f469f;}*/

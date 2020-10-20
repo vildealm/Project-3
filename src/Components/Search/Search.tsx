@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Search.css';
-import {TextField}from '@material-ui/core';
+import {TextField, Button}from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 import { connect } from 'tls';
 
@@ -8,7 +9,17 @@ import { connect } from 'tls';
 return(
     <div >
       <div className="search-container"> 
-      <TextField className="search" label="Search" variant="outlined"style={{ backgroundColor: 'white', width: '60vh' }}> Search...</TextField>
+      <TextField 
+          className="search" 
+          label="Search" 
+          variant="outlined"
+          style={{ backgroundColor: 'white', width: '80vh'}}> 
+      Search...</TextField>
+      <Button 
+          className="search-button1"
+          style={{backgroundColor: '#d2d3c9', borderRadius: '40%', margin: '5px 10px'}}> 
+          <SearchIcon/>
+      </Button>
       </div>
     </div>
       
