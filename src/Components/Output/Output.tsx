@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Output.css';
 
 
-
 export const Output = () => {
+  return (
+    <div>
+    
+    </div>
+    );
 
-    const [lastName, setLastName] = useState("Almestad");
-
-return(
-    <div></div>
+    }
     /** 
     <div>   
          <button onClick={() => setLastName("Bø")}> Endre navn </button>
@@ -22,6 +23,4 @@ return(
     </div>
 
   */
-);
-
-}
+ 

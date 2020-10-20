@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './AddPerson.css';
+import { List, ListItem, ListItemText } from '@material-ui/core';
 
- export const AddPerson = () => {
-return(
-      <button className = "addButton">+ Add person</button>
-);
- }
+const people: any = [
+      "Siri",
+      "Alexa",
+      "Google",
+      "Facebook",
+      "Twitter",
+      "Linkedin",
+      "Sinkedin"
+];
+
+export const AddPerson = () => {
+      return (
+      <div>
+            <div className="list-container">
+                  <ul>
+                        {people.map((item:React.ReactNode) => (
+                              <li>{item}</li>
+                        ))}
+                  </ul>
+            <button className="addButton">+ Add person</button>
+      </div>
+      </div> 
+      );
+}
 
 
 

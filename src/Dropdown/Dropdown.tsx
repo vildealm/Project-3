@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Dropdown.css';
 import { FormControl, MenuItem, Select, InputLabel, makeStyles } from '@material-ui/core';
 
@@ -26,10 +26,8 @@ export function Dropdown(props: any) {
     };
 
     /*
-  
       let options : any = props.options;
       let length : number = props.options.length;
-  
       function getAveiro(){
           //contact backend to getAveiro
       }
