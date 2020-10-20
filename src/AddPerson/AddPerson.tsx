@@ -1,6 +1,5 @@
 import React from 'react';
 import './AddPerson.css';
-import { List, ListItem, ListItemText } from '@material-ui/core';
 
 const people: any = [
       "Siri",
