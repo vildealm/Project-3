@@ -1,7 +1,7 @@
 import React from 'react';
 import './Search.css';
-import { TextField, Button } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+import { Button } from '@material-ui/core';
+//import SearchIcon from '@material-ui/icons/Search';
 
 export const Search = () => {
   /*const [searchTerm, setSearchTerm] = React.useState("");
@@ -25,17 +25,13 @@ export const Search = () => {
   return (
     <div>
       <div className="search-container">
-        <TextField
+        <input
+          type = "text"
           className="search"
-          label="Search"
-          variant="outlined"
-          style={{ backgroundColor: 'white', width: '80vh' }}>
-          Search...</TextField>
-        <Button
-          className="search-button1"
-          style={{ backgroundColor: '#d2d3c9', borderRadius: '40%', margin: '5px 10px' }}>
-          <SearchIcon />
-        </Button>
+          placeholder = "Search ..."
+          >
+          </input>
+        
       </div>
     </div>
   );

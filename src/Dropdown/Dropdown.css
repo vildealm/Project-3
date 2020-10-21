@@ -14,7 +14,12 @@
   display: inline-block;
   margin: 0px 10px;
   border-bottom: 3px #ce8e46 solid;
+  
 }
+.dropdown-age, .dropdown-location, .dropdown-sorting:hover{
+  cursor: pointer;
+}
+
 /*
 .dropdown {
   background-color: #ce8e46;
