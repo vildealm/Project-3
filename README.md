@@ -1,3 +1,11 @@
+### Backend
+
+Links:
+- [Create PostgreSQL on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+- [Set up remote PostgreSQL database server on Ubuntu](https://blog.logrocket.com/setting-up-a-remote-postgres-database-server-on-ubuntu-18-04/)
+- [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
+- 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
