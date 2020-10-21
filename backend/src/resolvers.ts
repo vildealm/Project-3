@@ -26,7 +26,7 @@ export const resolvers: ResolverMap = {
           let names = name.split(" ");
           const foundNames = await Person.find({where:[
             { first_name: Like(`%${names[0]}%`) }, //antar at det første ordet er et fornavn
-            { last_name: Like(`%${names[1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
+            { last_name: Like(`%${names[names.length-1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
          ]});
           return foundNames;
         }
