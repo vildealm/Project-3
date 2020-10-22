@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
+import gql from 'graphql-tag';
 import './Output.css';
 
 
 
 export const Output = () => {
 
-    const [lastName, setLastName] = useState("Almestad");
+  const GET_LOCATIONQUERY = gql`
+  {
+    getLocation(Keys: "${keys}",
+                 Packaging: "${packaging}",
+                 ProductSelection: "${productSelection}",
+                 Country: "${country}",
+                 YearMin: "${yearMin}",
+                 YearMax: "${yearMax}",
+                 PriceMin: ${priceMin},
+                 PriceMax: ${priceMax},
+                 Skipping: ${skipping},
+                 SortAfter: "${sortAfter}") {
+      Firstname
+      Lastname
+      Location
+      Age
+    }
+  }`;
+return GET_LOCATIONQUERY;
+
 
 return(
     <div></div>
