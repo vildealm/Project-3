@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { importSchema } from "graphql-import";
-import { GraphQLServer } from "graphql-yoga";
-import { createConnection } from "typeorm";
+//import { GraphQLServer } from "graphql-yoga";
+//import { createConnection } from "typeorm";
 import * as path from "path";
 import { resolvers } from "./resolvers";
 
