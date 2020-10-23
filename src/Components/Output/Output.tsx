@@ -1,41 +1,37 @@
 import React, { useState } from 'react';
 import gql from 'graphql-tag';
 import './Output.css';
+import { Query, QueryResult } from 'react-apollo';
+import { Outputs } from './Outputs';
 
 
-export const Output = () => {
-//  refreshQuery(keys = "", sortAfter = "") {
+ export const Output = () => (
 
-  //const GET_LOCATIONQUERY = gql`
-  //{
-   // getLocation(Keys: "${keys}",
-    //        SortAfter: "${sortAfter}") {
-   //   Firstname
-   //   Lastname
-    //  Location
-  //    Age
-  //  }
- // }`;
-//return GET_LOCATIONQUERY;
-
-
-return(
-    <div></div>
+  <Query query={gql`{
+      persons{
+        id,
+        location
+        }
+      }
+  `}>
+    {(result: QueryResult) => {
+      
+      if (result.loading) {
+        console.log("loading");
+        return <p>Loading ...</p>;
+      }
+      if (result.error) {
+        console.log("error");
   
-    );
+        return <p>Error </p>;
+      }
+      return result.data.persons.map(({currentPerson}: any) => (
+          <Outputs person={currentPerson}/>
+      ));
+    }}
+  </Query>
+ );
 
-    }
-    /** 
-    <div>   
-         <button onClick={() => setLastName("Bø")}> Endre navn </button>
-        
-        <ul className="list">
-          <li> {lastName}</li>
-          <li>{lastName} </li>
-          <li> {lastName} </li>
-        </ul>
-       
-    </div>
 
-  */
- 
+
+

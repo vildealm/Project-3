@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 type Person {
     id: Int!
     last_name: String!
@@ -12,8 +10,6 @@ input personFilter{
     age: Int
     location: String
 }
-
->>>>>>> develop
 
 type Query {
     nameSearch(name: String!): [Person]

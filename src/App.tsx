@@ -12,23 +12,25 @@ import {ApolloProvider, Query} from 'react-apollo';
 
 function App()  { 
 
+  
   const client = new ApolloClient({
-    uri: 'http://localhost:4000/'
+    uri: 'http://localhost:4000/graphql'
   })
  ;
 
-  
-  
  
+
 
   return (
     <ApolloProvider client={client}>
+      
       <div className="grid-container">
          <div className = "header"> <h1 > Finder </h1></div>
         <div className = "grid-search"><Search/></div>
         <div className ="grid-dropdown">
          <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
          <Dropdown filter="Age" options={["20-22", "23-25", "26-28", "29-31", "32-34", "35-37", "38-40"]}/>
+         <div><Output/></div>
         </div>
         
         <div><Launcher/></div>
