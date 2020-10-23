@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {  } from '@material-ui/core';
 import { Dropdown } from './Dropdown/Dropdown';
 import { Output } from './Components//Output/Output';
 import { Search } from './Components/Search/Search';
