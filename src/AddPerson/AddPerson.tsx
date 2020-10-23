@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './AddPerson.css';
 
- export const AddPerson = () => {
-    
+const people: any = [
+      "Siri",
+      "Alexa",
+      "Google",
+      "Facebook",
+      "Twitter",
+      "Linkedin",
+      "Sinkedin"
+];
 
-return(
-      <button className = "addButton">+ Add person</button>
-);
- }
+export const AddPerson = () => {
+      return (
+      <div>
+            <div className="list-container">
+                  <ul>
+                        {people.map((item:React.ReactNode) => (
+                              <li>{item}</li>
+                        ))}
+                  </ul>
+            <button className="addButton">+ Add person</button>
+      </div>
+      </div> 
+      );
+}
 
 
 

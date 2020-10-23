@@ -1,3 +1,11 @@
+### Backend
+
+Links:
+- [Create PostgreSQL on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+- [Set up remote PostgreSQL database server on Ubuntu](https://blog.logrocket.com/setting-up-a-remote-postgres-database-server-on-ubuntu-18-04/)
+- [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
+- 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -8,6 +16,10 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+also run 
+npm i apollo-boost 
+npm i react-apollo 
+to run Apllo . 
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.

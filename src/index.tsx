@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './App.css'; 
 import App from './App';
 import ApolloClient from 'apollo-boost';
 import { gql } from '@apollo/client';

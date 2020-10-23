@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Dropdown } from './Dropdown/Dropdown';
-import { Output } from './Components/List/Output/Output';
-import { Search } from './Components/List/Search';
+import { Output } from './Components//Output/Output';
+import { Search } from './Components/Search/Search';
 import { AddPerson } from './AddPerson/AddPerson';
 import Launcher from './Launcher';
 import ApolloClient, { gql } from 'apollo-boost';

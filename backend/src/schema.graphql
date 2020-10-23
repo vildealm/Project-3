@@ -1,7 +1,24 @@
+<<<<<<< HEAD
+=======
+type Person {
+    id: Int!
+    last_name: String!
+    first_name: String!
+    age: Int!
+    location: String!
+}
+
+input personFilter{
+    age: Int
+    location: String
+}
+
+>>>>>>> develop
 
 type Query {
-    hello(name: String): String!,
-    getLocation(location: String!): String
+    nameSearch(name: String!): [Person]
+    persons: [Person!]!
+    filterSearch(filter: personFilter): [Person]
 }
 
 type Mutation{

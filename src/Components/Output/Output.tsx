@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 import './Output.css';
 
 
-
 export const Output = () => {
 //  refreshQuery(keys = "", sortAfter = "") {
 
@@ -22,6 +21,10 @@ export const Output = () => {
 
 return(
     <div></div>
+  
+    );
+
+    }
     /** 
     <div>   
          <button onClick={() => setLastName("Bø")}> Endre navn </button>
@@ -35,6 +38,4 @@ return(
     </div>
 
   */
-);
-
-}
+ 
