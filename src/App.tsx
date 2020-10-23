@@ -17,18 +17,7 @@ function App()  {
   })
  ;
 
-
   
-    client.query({
-      query: gql`
-        {
-          points {
-            id last_name first_name age location 
-          }
-        }
-      `
-    })
-    .then(result => console.log(result));
   
  
 
