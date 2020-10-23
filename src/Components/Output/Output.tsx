@@ -18,7 +18,7 @@ import { Outputs } from './Outputs';
       
       if (result.loading) {
         console.log("loading");
-        return <p>Loading ...</p>;
+        return <p>Loading </p>;
       }
       if (result.error) {
         console.log("error");
