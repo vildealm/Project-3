@@ -10,7 +10,6 @@ import Launcher from './Launcher';
 function App() {
   return (
       <div className="grid-container">
-         
          <div className = "header"> <h1 > Finder </h1></div>
         <div className = "grid-search"><Search/></div>
         <div className ="grid-dropdown">

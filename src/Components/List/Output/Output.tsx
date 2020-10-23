@@ -5,19 +5,12 @@ import './Output.css';
 
 
 export const Output = () => {
+  refreshQuery(keys = "", sortAfter = "") {
 
   const GET_LOCATIONQUERY = gql`
   {
     getLocation(Keys: "${keys}",
-                 Packaging: "${packaging}",
-                 ProductSelection: "${productSelection}",
-                 Country: "${country}",
-                 YearMin: "${yearMin}",
-                 YearMax: "${yearMax}",
-                 PriceMin: ${priceMin},
-                 PriceMax: ${priceMax},
-                 Skipping: ${skipping},
-                 SortAfter: "${sortAfter}") {
+            SortAfter: "${sortAfter}") {
       Firstname
       Lastname
       Location

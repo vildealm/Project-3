@@ -2,15 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {ApolloClient, InMemoryCache} from 'apollo-boost';
+import ApolloClient from 'apollo-boost';
+import { gql } from '@apollo/client';
 import {ApolloProvider} from 'react-apollo';
 import * as serviceWorker from './serviceWorker';
 
-
-const client = new ApolloClient({
-  uri: 'http://localhost:4000',
-  cache: new InMemoryCache()
-});
+//API LINK
+const client = new ApolloClient({uri: 'https://it2810-04.idi.ntnu.no:3000/graphql'});
 
 ReactDOM.render(
   <React.StrictMode>  
@@ -19,7 +17,6 @@ ReactDOM.render(
     </ApolloProvider>
   </React.StrictMode>, 
     document.querySelector('.app-container')
-
 );
 
 // If you want your app to work offline and load faster, you can change
