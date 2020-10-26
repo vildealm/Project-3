@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import { Dropdown } from './Components/Dropdown/Dropdown';
 import Output from './Components//Output/Output';
 import { Search } from './Components/Search/Search';
 import { AddPerson } from './Components/AddPerson/AddPerson';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
-import { Outputs } from './Components/Output/Outputs';
-
- 
+import {ApolloProvider} from 'react-apollo'; 
 
 function App()  { 
   const client = new ApolloClient({
     uri: 'http://localhost:4000',    
     cache: new InMemoryCache()
-
-  })
- ;
+  });
 
   return (
     <ApolloProvider client = {client}>
@@ -33,4 +28,3 @@ function App()  {
   );
 }
 export default App;
-//<div className = "grid-output"><Output/></div> 

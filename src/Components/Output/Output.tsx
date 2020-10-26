@@ -7,7 +7,6 @@ import Person from '../Person/Person';
 
 
 const Output = () => (
-
   <Query query={gql`
       {
         persons{

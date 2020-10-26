@@ -6,7 +6,7 @@ export const PopUp = () => {
             <form className="form-popup">
                 <label>
                     Firstname:
-                    <input type="text" name="fname" />
+                    <input type="text" name="fname"/>
                 </label>
                 <label>
                     Lastname:
