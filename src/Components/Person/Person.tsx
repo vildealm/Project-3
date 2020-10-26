@@ -7,7 +7,7 @@ const Person = (props: any) => {
     let f_name = props.first_name;
     let l_name = props.last_name;
     let p_age = props.age;
-    let loc = props.locaion;
+    let loc = props.location;
     let desc = props.description;
 
     let examplePerson = ["Ola, Normann", 100, "Norge", "tullat"];
