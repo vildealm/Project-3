@@ -31,7 +31,7 @@ const Output = () => (
         return <p>{`${result.error}`} </p>;
       }
       return result.data.persons.map(({first_name, last_name, location, age, description}:any) => (
-          <Person first_name= {first_name} last_name = {last_name} location = {location} age= {age} description = {description}/>  
+         <Person first_name= {first_name} last_name = {last_name} location = {location} age= {age} description = {description}/>
       ));}}
   </Query>
  );

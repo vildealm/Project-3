@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import React from 'react';
+import './Person.css'
 
 const Person = (props: any) => {
 
@@ -21,7 +22,7 @@ const Person = (props: any) => {
 
 
     return (
-            <div>{person}</div>
+           <div className="person">{f_name} {l_name} <p className = "age"> Age: {p_age}</p></div>
     )
 }
 
