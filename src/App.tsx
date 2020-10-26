@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { Dropdown } from './Dropdown/Dropdown';
+import { Dropdown } from './Components/Dropdown/Dropdown';
 import { Output } from './Components//Output/Output';
 import { Search } from './Components/Search/Search';
-import { AddPerson } from './AddPerson/AddPerson';
+import { AddPerson } from './Components/AddPerson/AddPerson';
 import ApolloClient, { gql, InMemoryCache } from 'apollo-boost';
 import {ApolloProvider, Query} from 'react-apollo';
+import { Outputs } from './Components/Output/Outputs';
 
  
 
 function App()  { 
 
-  
   const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql',    
     cache: new InMemoryCache()
@@ -28,6 +28,7 @@ function App()  {
          <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
         </div>
         <div className="output"><Output/></div>
+        <div><Outputs person=""/></div>
         <div className = "addPerson"><AddPerson/></div>
       </div>
       </ApolloProvider>
