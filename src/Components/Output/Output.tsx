@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import './Output.css';
 import { Query, QueryResult } from 'react-apollo';
 import { Outputs } from './Outputs';
 
 
- export const Output = () => (
+const Output = () => (
 
-  <Query query={gql`{
-      persons{
-        id,
-        location
+  <Query query={gql`
+      {
+        persons{
+          id
+          first_name
+          last_name
+          location
+          age
+          description
         }
       }
   `}>
@@ -23,14 +28,15 @@ import { Outputs } from './Outputs';
       if (result.error) {
         console.log("error");
   
-        return <p>Error </p>;
+        return <p>{`${result.error}`} </p>;
       }
-      return result.data.persons.map(({currentPerson}: any) => (
-          <Outputs person={currentPerson}/>
-      ));
-    }}
+      return result.data.persons.map(({first_name, last_name, location, age, description}:any) => (
+          <Person first_name= {first_name} last_name = {last_name} location = {location} age= {age} description = {description}/>  
+      ));}}
   </Query>
  );
+
+export default Output;
 
 
 
