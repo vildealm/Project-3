@@ -27,7 +27,6 @@ function App()  {
          <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
         </div>
         <div className="output"><Output/></div>
-        <div><Outputs person=""/></div>
         <div className = "addPerson"><AddPerson/></div>
       </div>
     </ApolloProvider>
