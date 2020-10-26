@@ -19,12 +19,12 @@ function App()  {
  ;
 
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client = {client}>
       <div className="grid-container">
          <div className = "header"> <h1 > Finder </h1></div>
         <div className = "search"><Search/></div>
         <div className ="dropdown">
-         <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
+         <Dropdown />
         </div>
         <div className="output"><Output/></div>
         <div className = "addPerson"><AddPerson/></div>
@@ -32,6 +32,5 @@ function App()  {
     </ApolloProvider>
   );
 }
-
 export default App;
 //<div className = "grid-output"><Output/></div> 

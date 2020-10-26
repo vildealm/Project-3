@@ -1,8 +1,8 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
 
 .dropbtn {
-  background-color:#282c34;
-  color: #ce8e46;
+  background-color:#d9ecf2;
+  color: #ff414d;
   padding: 14px;
   font-size: 20px;
   border: none;
@@ -13,30 +13,17 @@
   position: relative;
   display: inline-block;
   margin: 0px 10px;
-  border-bottom: 3px #ce8e46 solid;
+  border-bottom: 3px #ff414d solid;
   
 }
 .dropdown-age, .dropdown-location, .dropdown-sorting:hover{
   cursor: pointer;
 }
 
-/*
-.dropdown {
-  background-color: #ce8e46;
-  color: white;
-  padding: 0.8em 2em 0.8em 2em;
-  margin: 0.2em 0.2em 0.2em 0em;
-  font-size: 16px;
-  border: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}*/
-
 .dropdownContent {
   display: none;
   position: absolute;
-  background-color: #d2d3c9;
+  background-color: #f56a79;
   min-width: 28vh;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -50,7 +37,7 @@
 }
 
 .dropdownContent a:hover {
-  background-color: #ddd;
+  background-color: #d9ecf2;
 }
 
 .dropdown-age:hover .dropdownContent, .dropdown-location:hover .dropdownContent, .dropdown-sorting:hover .dropdownContent   {
@@ -58,5 +45,5 @@
 }
 
 .dropdown-age:hover .dropButton {
-  background-color: #ce8f469f;
+  background-color: #d9ecf2;
 }

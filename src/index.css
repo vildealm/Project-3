@@ -36,7 +36,7 @@ code {
                         "addPerson addPerson"
                         "launcher launcher"; 
   grid-template-rows: 20% 10% 10% 60%;  
-  background-color: #282c34;
+  background-color: #d9ecf2;
   font-size: calc(10px + 2vmin);
   padding: 10px;
 }
@@ -45,7 +45,7 @@ code {
   text-align: center;
   margin: 20px 10px;
   padding: 0;
-  background-color: #282c34;
+  background-color: #d9ecf2;
 }
 
 .search-container {
