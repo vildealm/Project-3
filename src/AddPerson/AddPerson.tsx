@@ -1,28 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AddPerson.css';
-
-const people: any = [
-      "Siri",
-      "Alexa",
-      "Google",
-      "Facebook",
-      "Twitter",
-      "Linkedin",
-      "Sinkedin"
-];
+import {PopUp} from './PopUp'; 
 
 export const AddPerson = () => {
+      let [togglePop, setToggle] = useState(false);
       return (
-      <div>
-            <div className="list-container">
-                  <ul>
-                        {people.map((item:React.ReactNode) => (
-                              <li>{item}</li>
-                        ))}
-                  </ul>
-            <button className="addButton">+ Add person</button>
-      </div>
-      </div> 
+            <div>
+                  <div className="list-container">
+                        <div className="popup-wrapper"> 
+                              <button className="addButton" onClick={() => setToggle(togglePop = true)}>+ Add person</button>
+                              {togglePop ? <PopUp/> : null}
+                        </div>
+                  </div>
+            </div>
       );
 }
 

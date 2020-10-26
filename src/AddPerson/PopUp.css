@@ -1,0 +1,13 @@
+.form-popup {
+    text-align: center;
+    border: 3px solid #f1f1f1;
+  }
+
+  .form-popup input[type=text], .form-popup input[type=number] {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: none;
+    background: #f1f1f1;
+  }
+  

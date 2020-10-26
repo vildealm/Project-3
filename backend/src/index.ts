@@ -8,7 +8,6 @@ import { resolvers } from "./resolvers";
 
 export const startServer = async () => {
   const typeDefs = importSchema(path.join(__dirname, "./schema.graphql"));
-
   const server = new GraphQLServer({ typeDefs, resolvers });
   await createConnection();
   await server.start();
