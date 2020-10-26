@@ -1,9 +1,5 @@
 import React from 'react';
 import './Search.css';
-<<<<<<< HEAD
-//import { Button } from '@material-ui/core';
-=======
->>>>>>> 3426d3de95e93220e48adc82c9dce3234ff1a31d
 //import SearchIcon from '@material-ui/icons/Search';
 
 export const Search = () => {
