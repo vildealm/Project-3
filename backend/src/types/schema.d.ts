@@ -42,6 +42,7 @@ last_name: string;
 first_name: string;
 age: number;
 location: string;
+description: string;
 }
 
 interface IPersonFilter {
@@ -59,6 +60,7 @@ last_name: string;
 first_name: string;
 age: number;
 location: string;
+description: string;
 }
 }
 

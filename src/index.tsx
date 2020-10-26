@@ -12,8 +12,7 @@ import * as serviceWorker from './serviceWorker';
 const client = new ApolloClient({uri: 'https://it2810-04.idi.ntnu.no:3000/graphql'});
 
 ReactDOM.render(
-  <React.StrictMode>  
-
+  <React.StrictMode>
     <App />
   </React.StrictMode>, 
     document.querySelector('.app-container')

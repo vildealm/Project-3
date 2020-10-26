@@ -2,6 +2,8 @@
 .search { grid-area: search }
 .dropdown { grid-area: dropdown; }
 .output {grid-area: output; }
+.launcher {grid-area: launcher; }
+.addPerson {grid-area: addPerson; }
 
 body {
   width: 100%;
@@ -29,7 +31,9 @@ code {
   grid-template-areas: "header header "
                         "search search"
                         "dropdown dropdown"
-                        "output output "; 
+                        "output output "
+                        "addPerson addPerson"
+                        "launcher launcher"; 
   grid-template-rows: 20% 10% 10% 60%;  
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
@@ -42,8 +46,30 @@ code {
   padding: 0;
   background-color: #282c34;
 }
+
 .search-container {
   float: right;
+}
+
+p, h1, h2, h3{
+  color: white;
+}
+
+.dropdown{
+  margin: auto;
+}
+
+.output{
+  padding: 5%;
+  text-align: center;
+}
+
+.search {
+  width: 100%
+}
+
+.header{
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

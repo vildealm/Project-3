@@ -15,8 +15,17 @@ function App()  {
   
   const client = new ApolloClient({
     uri: 'http://localhost:4000/graphql'
-  })
- ;
+  });
+
+  client.query({
+    query: gql`{
+      query persons{
+        id,
+        location
+        }
+      }
+  `,
+  }).then(data => console.log(data)).catch(err => console.error(err));
 
  
 
@@ -26,15 +35,13 @@ function App()  {
       
       <div className="grid-container">
          <div className = "header"> <h1 > Finder </h1></div>
-        <div className = "grid-search"><Search/></div>
-        <div className ="grid-dropdown">
+        <div className = "search"><Search/></div>
+        <div className ="dropdown">
          <Dropdown filter="City" options={["Trondheim", "Aveiro", "Washington"]}/>
-         <Dropdown filter="Age" options={["20-22", "23-25", "26-28", "29-31", "32-34", "35-37", "38-40"]}/>
-         <div><Output/></div>
         </div>
-        
-        <div><Launcher/></div>
-        <div className = "grid-addPerson"><AddPerson/></div>
+        <div className="output"><Output/></div>
+        <div className = "addPerson"><AddPerson/></div>
+        <div className="launcher"><Launcher/></div>
       </div>
       </ApolloProvider>
   );

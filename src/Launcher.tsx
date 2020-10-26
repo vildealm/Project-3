@@ -6,7 +6,7 @@ import {Query} from 'react-apollo';
 
 const LAUNCHES_QUERY = gql`
 query LaunchesQuery{
-    launches {
+    persons {
         last_name
         first_name 
        
