@@ -18,4 +18,7 @@ export class Person extends BaseEntity {
     @Column()
     location: string;
 
+    @Column()
+    description: string;
+
 }

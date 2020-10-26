@@ -40,9 +40,9 @@ export const resolvers: ResolverMap = {
       }
     },
     Mutation: {
-      register: (_, { last_name, first_name, age, location }: GQL.IRegisterOnMutationArguments) => {
+      register: (_, { last_name, first_name, age, location, description }: GQL.IRegisterOnMutationArguments) => {
         const person = Person.create({
-            last_name, first_name, age, location
+            last_name, first_name, age, location, description
         });
 
         person.save();
