@@ -6,7 +6,6 @@ import { Search } from './Components/Search/Search';
 import { AddPerson } from './Components/AddPerson/AddPerson';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
-import { Outputs } from './Components/Output/Outputs';
 
  
 

@@ -11,6 +11,8 @@ body {
   height: auto;
   margin: 0;
   padding: 0;
+  background-color: #d9ecf2;
+
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -36,7 +38,6 @@ code {
                         "addPerson addPerson"
                         "launcher launcher"; 
   grid-template-rows: 20% 10% 10% 60%;  
-  background-color: #d9ecf2;
   font-size: calc(10px + 2vmin);
   padding: 10px;
 }
@@ -49,7 +50,8 @@ code {
 }
 
 .search-container {
-  float: right;
+  margin: auto;
+  text-align: center;
 }
 
 p, h1, h2, h3{
@@ -61,7 +63,7 @@ p, h1, h2, h3{
 }
 
 .output{
-  padding: 5%;
+  margin: auto;
   text-align: center;
 }
 
