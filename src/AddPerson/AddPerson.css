@@ -1,12 +1,11 @@
 
 .addButton{
-    margin: 2em 2em 2em 2em;
+    margin: 2em 1em;
     box-sizing: border-box;
-    border: 2px solid #1aa6b7;
     font-size: 16px;
     background-color: #1aa6b7;
     background-position: 10px 10px; 
-    padding: 20px 40px 20px 40px;
+    padding: 20px 40px;
     box-shadow: 1px 1px 2px #1a1d1a;
     border-radius: 100px;
     position: absolute;

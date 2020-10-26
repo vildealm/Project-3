@@ -24,6 +24,7 @@ export const PopUp = () => {
                     Bio:
                     <input type="text" name="bio" />
                 </label>
+                <button className="submit-form-btn"> Submit </button>
             </form>
         </div>
     )

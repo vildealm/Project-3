@@ -1,13 +1,23 @@
 .form-popup {
     text-align: center;
     border: 3px solid #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 8px #888888;
   }
 
-  .form-popup input[type=text], .form-popup input[type=number] {
-    width: 80%;
+  .form-popup input[type=text], .form-popup input[type=number]{
+    width: 40vh;
     padding: 10px;
-    margin: 5px 0 20px;
+    margin: 20px 0px 20px 10px;
     border: none;
     background: #f1f1f1;
   }
+  .submit-form-btn {
+    padding: 10px;
+    margin: 20px 0;
+    width: 20vh;
+  }
+
+
   
