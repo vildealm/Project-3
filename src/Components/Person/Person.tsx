@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 
-export const Person = (props: any) => {
+const Person = (props: any) => {
 
 
     let f_name = props.first_name;
@@ -23,4 +23,6 @@ export const Person = (props: any) => {
     return (
             <div>{person}</div>
     )
-}   
+}
+
+export default Person;

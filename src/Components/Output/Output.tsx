@@ -2,7 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import './Output.css';
 import { Query, QueryResult } from 'react-apollo';
-import { Outputs } from './Outputs';
+//import { Outputs } from './Outputs';
+import Person from '../Person/Person';
 
 
 const Output = () => (
