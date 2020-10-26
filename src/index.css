@@ -5,6 +5,7 @@
 .launcher {grid-area: launcher; }
 .addPerson {grid-area: addPerson; }
 
+
 body {
   width: 100%;
   height: auto;
@@ -81,4 +82,3 @@ p, h1, h2, h3{
       'output';
   }
 }
-
