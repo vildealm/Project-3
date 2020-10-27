@@ -22,7 +22,7 @@ interface PersonName {
 
 const GET_PERSON = gql`
   query nameSearch($name: String!) {
-    persons(name: $name) {
+    nameSearch(name: $name) {
       id
       first_name
       last_name
