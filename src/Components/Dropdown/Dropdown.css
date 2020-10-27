@@ -44,3 +44,29 @@
   display: block;
 }
 
+.age {
+  padding: 0.15em;
+  margin: 0.5em;
+
+}
+
+.age-label{
+ color: #c2575e;
+ font-size: 20px;
+
+}
+.age-button {
+  font-size: 16px;
+  background-color: #c2575e;
+  background-position: 10px 10px; 
+  padding: 5px 10px;
+  box-shadow: 2px 3px 2px #1a1d1a27;
+  border-radius: 100px;
+  border-style: none;
+  color: white;
+}
+.age-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
