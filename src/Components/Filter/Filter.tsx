@@ -1,11 +1,12 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useState } from 'react';
 import './Filter.css';
-import { useQuery } from 'react-apollo';
+import { useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 
 
 //dette er den valgte alderen det skal filtreres på
-let ageFilter; 
+/*let ageFilter; 
 let locationFilter : any; 
 let searchFilter : any; 
 
@@ -14,96 +15,101 @@ function submitAgeFilter(event: React.FormEvent<HTMLFormElement>){
     let inputElement: HTMLInputElement = document.getElementById('number') as HTMLInputElement;
     let value: string = inputElement.value;
     ageFilter = parseInt(value);
-    console.log(ageFilter)
 }
 
 function submitLocationFilter(location : string ) : any {
-    locationFilter = location;
-    console.log(locationFilter);
+    /*locationFilter = location;
+    const [age, setAge] = useState(0);
+    const [location, setLocation] = useState('');
+    const { loading, data, error } = useQuery(
+        FILTER_SEARCH,
+        { variables: { age: age, location: location } }
+    );
 }
 
-function submitSearchFilter( event: React.FormEvent<HTMLFormElement>) : any {
-    event.preventDefault();
-    let searchElement: HTMLInputElement = document.getElementById("search") as HTMLInputElement;
-    searchFilter = searchElement.value;
-}
+function SearchFilter( name: String) : any {
+    
+}*/
 
 const GET_PERSON = gql`
     query nameSearch($name: String!){
         nameSearch(name: $name){
             first_name
             last_name
+            age
             location
             description
         }
     }
 `;
 
-interface Person {
-    id: number;
-    first_name: string;
-    last_name: string;
-    age: number;
-    location: string;
-    description: string;
-  }
-  
-interface Persons {
-    rocketInventory: Person[];
-}
-
-interface PersonName {
-    name: string;
-}
-
-/*function FindPeople(searchedName: String) {
-    const { loading, data, error } = useQuery(
-        GET_PERSON,
-        { variables: { name: searchedName } }
-    );
-    if(loading){console.log("loading")};
-    if(error){console.log(error)};
-    console.log(data);
-    return (
-      <div></div>)  
-}*/
+const FILTER_SEARCH = gql`
+    query filterSearch($age: Int, $location: String){
+        filterSearch(filter: {age: $age, location: $location} ){
+            first_name
+            last_name
+            age
+            location
+            description
+        }
+    }
+`;
 
 export function Filter() : any {
-    const { loading, data, error } = useQuery(
+    const [name, setName] = useState('');
+    const[locationOutput, setLocationOutput] = useState('Location');
+    
+    const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
-        { variables: { name: "oe" } }
+        { variables: { name: name } }
     );
-    if(loading){console.log("loading")};
-    if(error){console.log(error)};
-    console.log(data);
+
+    const [age, setAge] = useState(0);
+    const [location, setLocation] = useState('any');
+    const [filterSearch, filterResults] = useLazyQuery(
+        FILTER_SEARCH,
+        { variables: { age: age, location: location} });
+    console.log(filterResults.data);
+    console.log(nameResults.data);
     return (
         <div>  
             <div className="search-container">
                 <form onSubmit={(event) => {
                     event.preventDefault();
                     let name : HTMLInputElement = document.getElementById("nameSearch") as HTMLInputElement;
-                    //FindPeople(name.value);
+                    setName(name.value);
+                    searchName();
                     }}>
                     <input type = "text" id="nameSearch" className="search" placeholder = "Search ..."></input>
                     <button type="submit">Search</button>
                 </form>
             </div>    
             <div className = "dropdown-age">
-                <form onSubmit={submitAgeFilter}>
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    let inputAge : HTMLInputElement = document.getElementById("number") as HTMLInputElement;
+                    if(inputAge.value === ''){
+                        setAge(0);
+                    }
+                    else{
+                        setAge(parseInt(inputAge.value));
+                    }
+                    filterSearch();}}>
                     <label className = "age-label" > Age: </label>
-                    <input className = "age" type="number" id="number" min="1" max="100"  ></input>
+                    <input className = "age" type="number" id="number" min="0" max="100"></input>
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
 
 
             <div className="dropdown-location">
-                <button className="dropbtn">Location ▼</button>
+                <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={submitLocationFilter("Trondheim")}>Trondheim</a>
-                    <a onClick={submitLocationFilter("Torino")}>Torino</a>
-                    <a onClick={submitLocationFilter("Oslo")}>Oslo</a>
-                    <a onClick={submitLocationFilter("Washington")}>Washington</a>
+                    <a onClick={()=> {setLocation("any");filterSearch();}}>Any</a>
+                    <a onClick={()=> {setLocation("Trondheim");filterSearch();}}>Trondheim</a>
+                    <a onClick={()=> {setLocation("Torino");filterSearch();}}>Torino</a>
+                    <a onClick={()=> {setLocation("Oslo");filterSearch();}}>Oslo</a>
+                    <a onClick={()=> {setLocation("Washington");filterSearch();}}>Washington</a>
                 </div>
             </div>
             <div className="dropdown-sorting">

@@ -22,12 +22,10 @@ const Output = () => (
     {(result: QueryResult) => {
       
       if (result.loading) {
-        console.log("loading");
         return <p>Loading </p>;
       }
       if (result.error) {
         console.log("error");
-  
         return <p>{`${result.error}`} </p>;
       }
       return result.data.persons.map(({first_name, last_name, location, age, description}:any) => (

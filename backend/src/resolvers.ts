@@ -10,14 +10,17 @@ export const resolvers: ResolverMap = {
         const location = filter?.location;
         let persons;
 
-        if(filter?.age && filter.location){
+        if(filter?.age && filter?.location && filter?.age !== 0 && filter?.location !== "any"){
           persons = (Person.find({where:{ age, location } }) );
         }
-        else if(!filter?.location){
+        else if((!filter?.location || filter?.location === "any") && filter?.age !== 0 ){
           persons = (Person.find({where:{ age } }) );
         }
-        else{
+        else if(filter?.location !== "any" && (!filter?.age || filter?.age === 0)){
           persons = (Person.find({where:{ location } }) );
+        }
+        else{
+          persons = (Person.find());
         }
         return persons;
       },
