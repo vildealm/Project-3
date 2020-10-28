@@ -22,7 +22,6 @@ function iterate (length :any ) {
 
 const Output = (props: any) => (
 
-  
 
   <Query query={gql`
       {
