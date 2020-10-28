@@ -58,6 +58,8 @@ const FILTER_SEARCH = gql`
 export function Filter() : any {
     const [name, setName] = useState('');
     const[locationOutput, setLocationOutput] = useState('Location');
+    const[sortOutput, setSortOutput] = useState('Sort by');
+    const[sort, setSort] = useState('any');
     
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
@@ -105,18 +107,19 @@ export function Filter() : any {
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={()=> {setLocation("any");filterSearch();}}>Any</a>
-                    <a onClick={()=> {setLocation("Trondheim");filterSearch();}}>Trondheim</a>
-                    <a onClick={()=> {setLocation("Torino");filterSearch();}}>Torino</a>
-                    <a onClick={()=> {setLocation("Oslo");filterSearch();}}>Oslo</a>
-                    <a onClick={()=> {setLocation("Washington");filterSearch();}}>Washington</a>
+                    <a onClick={()=> {setLocation("any");setLocationOutput("Location");filterSearch();}}>Any</a>
+                    <a onClick={()=> {setLocation("Trondheim");setLocationOutput("Trondheim");filterSearch();}}>Trondheim</a>
+                    <a onClick={()=> {setLocation("Torino");setLocationOutput("Torino");filterSearch();}}>Torino</a>
+                    <a onClick={()=> {setLocation("Oslo");setLocationOutput("Oslo");filterSearch();}}>Oslo</a>
+                    <a onClick={()=> {setLocation("Washington");setLocationOutput("Washington");filterSearch();}}>Washington</a>
                 </div>
             </div>
             <div className="dropdown-sorting">
-                <button className="dropbtn">Sort by ▼</button>
+                <button className="dropbtn">{sortOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a>Alphabetical</a>
-                    <a>Age</a>
+                    <a onClick={()=> {setSort("any");setSortOutput("Sort by");filterSearch();}}>Any</a>
+                    <a onClick={()=> {setSort("alphabetical");setSortOutput("Alphabetical");filterSearch();}}>Alphabetical</a>
+                    <a onClick={()=> {setSort("age");setSortOutput("Age");filterSearch();}}>Age</a>
                 </div>
 
             </div>
