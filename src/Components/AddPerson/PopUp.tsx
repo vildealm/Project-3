@@ -36,21 +36,19 @@ export const PopUp = () => {
             {data && data.addPerson ? <p>Saved!</p> : null}
             <form className="form-popup" style={{display: visible}} onSubmit={(e) => {e.preventDefault()}}>
                 <label>
-                    Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)}/>
-                    {console.log("Firstname: " + first_name)}
+                    Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)} maxLength={13} required/>  
                 </label>
                 <label>
-                    Lastname: <input type="text" onChange={(e) => setLastName(e.target.value)}/>
-                    {console.log("Lastname: " + last_name)}
+                    Lastname: <input type="text" onChange={(e) => setLastName(e.target.value)} maxLength={24} required/>
                 </label>
                 <label>
-                    Age: <input type="number" onChange={(e) => setAge(+e.target.value)} required/>
+                    Age: <input type="number" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required/>
                 </label>
                 <label>
-                    Location: <input type="text" onChange={(e) => setLoc(e.target.value)} required/>
+                    Location: <input type="text" onChange={(e) => setLoc(e.target.value)} maxLength={24} required/>
                 </label>
                 <label>
-                    Bio: <input type="text" onChange={(e) => setDesc(e.target.value)} required/>
+                    Bio: <input type="text" onChange={(e) => setDesc(e.target.value)} maxLength={100} required/>
                 </label>
                 <button className="submit-form-btn" type="submit" onClick={() => 
                     first_name && 
