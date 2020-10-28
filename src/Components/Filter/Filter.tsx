@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import './Filter.css';
-import { useLazyQuery } from 'react-apollo';
+import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
+import { Description } from '@material-ui/icons';
 
 
 //dette er den valgte alderen det skal filtreres på
@@ -31,6 +32,29 @@ function SearchFilter( name: String) : any {
     
 }*/
 
+function sortDataAlpha(queryResult: QueryResult, sort: string){
+    let person = {
+        first_name: String,
+        last_name: String,
+        age: Number,
+        location: String,
+        description: String
+    }
+    let people : typeof person[];
+    if(queryResult.data !== undefined){
+        queryResult.data.filterSearch.map(({first_name, last_name, age, location, description}: any) => {
+            console.log(first_name, last_name);
+            person.first_name = first_name;
+            person.last_name = last_name;
+            person.age = age;
+            person.location = location;
+            person.description = description;
+            //people.push(person);
+            console.log(person);
+        });
+    }
+}
+
 const GET_PERSON = gql`
     query nameSearch($name: String!){
         nameSearch(name: $name){
@@ -56,6 +80,7 @@ const FILTER_SEARCH = gql`
 `;
 
 export function Filter() : any {
+    const [activeFilter, setActiveFilter] = useState('');
     const [name, setName] = useState('');
     const[locationOutput, setLocationOutput] = useState('Location');
     const[sortOutput, setSortOutput] = useState('Sort by');
@@ -81,6 +106,7 @@ export function Filter() : any {
                     let name : HTMLInputElement = document.getElementById("nameSearch") as HTMLInputElement;
                     setName(name.value);
                     searchName();
+                    setActiveFilter('nameSearch');
                     }}>
                     <input type = "text" id="nameSearch" className="search" placeholder = "Search ..."></input>
                     <button type="submit">Search</button>
@@ -96,6 +122,7 @@ export function Filter() : any {
                     else{
                         setAge(parseInt(inputAge.value));
                     }
+                    setActiveFilter('filters');
                     filterSearch();}}>
                     <label className = "age-label" > Age: </label>
                     <input className = "age" type="number" id="number" min="0" max="100"></input>
@@ -107,19 +134,19 @@ export function Filter() : any {
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={()=> {setLocation("any");setLocationOutput("Location");filterSearch();}}>Any</a>
-                    <a onClick={()=> {setLocation("Trondheim");setLocationOutput("Trondheim");filterSearch();}}>Trondheim</a>
-                    <a onClick={()=> {setLocation("Torino");setLocationOutput("Torino");filterSearch();}}>Torino</a>
-                    <a onClick={()=> {setLocation("Oslo");setLocationOutput("Oslo");filterSearch();}}>Oslo</a>
-                    <a onClick={()=> {setLocation("Washington");setLocationOutput("Washington");filterSearch();}}>Washington</a>
+                    <a onClick={()=> {setLocation("any");setLocationOutput("Location");filterSearch();setActiveFilter('filters');}}>Any</a>
+                    <a onClick={()=> {setLocation("Trondheim");setLocationOutput("Trondheim");filterSearch();setActiveFilter('filters');}}>Trondheim</a>
+                    <a onClick={()=> {setLocation("Torino");setLocationOutput("Torino");filterSearch();setActiveFilter('filters');}}>Torino</a>
+                    <a onClick={()=> {setLocation("Oslo");setLocationOutput("Oslo");filterSearch();setActiveFilter('filters');}}>Oslo</a>
+                    <a onClick={()=> {setLocation("Washington");setLocationOutput("Washington");filterSearch();setActiveFilter('filters');}}>Washington</a>
                 </div>
             </div>
             <div className="dropdown-sorting">
                 <button className="dropbtn">{sortOutput} ▼</button>
                 <div className="dropdownContent">
                     <a onClick={()=> {setSort("any");setSortOutput("Sort by");filterSearch();}}>Any</a>
-                    <a onClick={()=> {setSort("alphabetical");setSortOutput("Alphabetical");filterSearch();}}>Alphabetical</a>
-                    <a onClick={()=> {setSort("age");setSortOutput("Age");filterSearch();}}>Age</a>
+                    <a onClick={()=> {setSort("alphabetical");setSortOutput("Alphabetical");sortDataAlpha(filterResults, 'alphabetical')}}>Alphabetical</a>
+                    <a onClick={()=> {setSort("age");setSortOutput("Age");filterSearch();sortDataAlpha(filterResults, 'age')}}>Age</a>
                 </div>
 
             </div>

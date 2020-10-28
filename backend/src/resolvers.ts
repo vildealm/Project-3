@@ -4,7 +4,11 @@ import { Like } from "typeorm";
 
 export const resolvers: ResolverMap = {
     Query: {
-      persons: () => Person.find(),
+      persons: () => Person.find(
+        {
+          order:{first_name: 'ASC'}
+        }
+      ),
       filterSearch: (_, { filter }: GQL.IFilterSearchOnQueryArguments) => {
         const age = filter?.age;
         const location = filter?.location;
@@ -20,7 +24,9 @@ export const resolvers: ResolverMap = {
           persons = (Person.find({where:{ location } }) );
         }
         else{
-          persons = (Person.find());
+          persons = (Person.find({
+            order:{first_name: 'ASC'}
+          }));
         }
         return persons;
       },
