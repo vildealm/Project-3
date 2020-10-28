@@ -1,9 +1,7 @@
 import React from 'react';
 import './Filter.css';
-
-
-
-
+import { Query, QueryResult } from 'react-apollo';
+import gql from 'graphql-tag';
 
 
 //dette er den valgte alderen det skal filtreres på
@@ -21,17 +19,50 @@ function submitLocationFilter(location : string ) : any {
     
 }
 
+const nameSearch = (name: string) => (
+    <Query query={gql`
+        {
+          nameSearch(name: $name){
+            id
+            first_name
+            last_name
+            location
+            age
+            description
+          }
+        }
+    `}>
+      {(result: QueryResult) => {
+        
+        if (result.loading) {
+          console.log("loading");
+          return <p>Loading </p>;
+        }
+        if (result.error) {
+          console.log("error");
+    
+          return <p>{`${result.error}`} </p>;
+        }
+  
+        return result.data.nameSearch.map(({first_name, last_name, location, age, description}:any) => (
+            console.log(first_name, last_name, age, location, description)
+        ));}}
+    </Query>
+   );
+
 export function Filter() : any {
+    
     return (
         <div>  
   
             <div className="search-container">
-            <input
-            type = "text"
-            className="search"
-            placeholder = "Search ..."
-            >
-            </input>
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    nameSearch('oe');
+                    }}>
+                    <input type = "text" className="search" placeholder = "Search ..."></input>
+                    <button type="submit">Search</button>
+                </form>
             </div>    
             <div className = "dropdown-age">
                 <label className = "age-label" > Age: </label>
