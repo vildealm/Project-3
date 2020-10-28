@@ -15,7 +15,16 @@ export const PopUp = () => {
     const [age, setAge] = useState(0);
     const [location, setLoc] = useState('');
     const [description, setDesc] = useState('');
-    const [show, setVisibility] = useState(false); 
+    let [visible, setVisibility] = useState(''); 
+
+   
+    const onClose =(close : boolean)=> {
+        if(close){
+            setVisibility(visible='none');
+        }else{
+            setVisibility(visible=''); 
+        }
+    }
 
     const [addPerson, { error, data }] = useMutation(ADD_PERSON, 
             {variables: {first_name: first_name, last_name: last_name, age: age, location: location, description: description}});
@@ -25,7 +34,7 @@ export const PopUp = () => {
             <div className="overlay"> 
             {error ? <p>Oh no! {error.message}</p> : null}
             {data && data.addPerson ? <p>Saved!</p> : null}
-            <form className="form-popup" onSubmit={(e) => {e.preventDefault();}}>
+            <form className="form-popup" style={{display: visible}} onSubmit={(e) => {e.preventDefault()}}>
                 <label>
                     Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)}/>
                     {console.log("Firstname: " + first_name)}
@@ -43,13 +52,14 @@ export const PopUp = () => {
                 <label>
                     Bio: <input type="text" onChange={(e) => setDesc(e.target.value)} required/>
                 </label>
-                <button className="submit-form-btn" type="submit"onClick={() => 
+                <button className="submit-form-btn" type="submit" onClick={() => 
                     first_name && 
                     last_name && 
                     age &&
                     location && 
                     description && 
-                    addPerson()}>
+                    addPerson() &&
+                    onClose(true)}>
                     Submit
                 </button>
             </form>
