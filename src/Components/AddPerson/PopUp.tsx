@@ -9,37 +9,20 @@ const ADD_PERSON = gql`
   }
 `;
 
-//$firstname: String!, $lastname: String!, $age: Int!, $location: String!, $description: String!)
-/*
-interface PersonInventory {
-    user_id: number;
-    first_name: string;
-    last_name: string;
-    age: number;
-    location: string;
-    description: string;
-}
-
-interface NewPersonDetails {
-    first_name: string;
-    last_name: string;
-    age: number;
-    location: string;
-    description: string;
-}*/
-
 export const PopUp = () => {
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [age, setAge] = useState(0);
     const [location, setLoc] = useState('');
     const [description, setDesc] = useState('');
+    const [show, setVisibility] = useState(false); 
 
     const [addPerson, { error, data }] = useMutation(ADD_PERSON, 
             {variables: {first_name: first_name, last_name: last_name, age: age, location: location, description: description}});
 
     return (
         <div>
+            <div className="overlay"> 
             {error ? <p>Oh no! {error.message}</p> : null}
             {data && data.addPerson ? <p>Saved!</p> : null}
             <form className="form-popup" onSubmit={(e) => {e.preventDefault();}}>
@@ -60,7 +43,7 @@ export const PopUp = () => {
                 <label>
                     Bio: <input type="text" onChange={(e) => setDesc(e.target.value)} required/>
                 </label>
-                <button className="submit-form-btn" type="submit" onClick={() => 
+                <button className="submit-form-btn" type="submit"onClick={() => 
                     first_name && 
                     last_name && 
                     age &&
@@ -70,6 +53,7 @@ export const PopUp = () => {
                     Submit
                 </button>
             </form>
+            </div>
         </div>
     );
 };
