@@ -49,7 +49,11 @@ export const PopUp = () => {
         <div>
             {error ? <p>Oh no! {error.message}</p> : null}
             {data && data.addPerson ? <p>Saved!</p> : null}
-            <form className="form-popup">
+            <form className="form-popup" onSubmit={e => {e.preventDefault(); 
+                addPerson({variables: {first_name, last_name, age: +age, location, description }});
+                
+                }}
+                >
                 <label>
                     Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)} />
                 </label>
@@ -65,13 +69,7 @@ export const PopUp = () => {
                 <label>
                     Bio: <input type="text" defaultValue={description} onChange={(e) => setDesc(e.target.value)} required />
                 </label>
-                <button className="submit-form-btn" type="submit" onClick={() =>
-                    first_name &&
-                    last_name &&
-                    age &&
-                    location &&
-                    description &&
-                    addPerson()}>
+                <button className="submit-form-btn" type="submit">
                     Submit
     </button>
             </form>
