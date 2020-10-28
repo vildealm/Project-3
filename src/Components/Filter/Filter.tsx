@@ -2,7 +2,6 @@ import React from 'react';
 import './Filter.css';
 
 
-//dette er den valgte alderen det skal filtreres på
 let ageFilter; 
 let locationFilter : any; 
 let searchFilter : any; 
@@ -17,6 +16,7 @@ function submitAgeFilter(event: React.FormEvent<HTMLFormElement>){
 
 function submitLocationFilter(location : string ) : any {
     locationFilter = location;
+    console.log(locationFilter);
 }
 
 function submitSearchFilter( event: React.FormEvent<HTMLFormElement>) : any {
@@ -41,6 +41,7 @@ export function Filter() : any {
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
+
 
             <div className="dropdown-location">
                 <button className="dropbtn">Location ▼</button>
