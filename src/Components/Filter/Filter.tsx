@@ -1,6 +1,6 @@
 import React from 'react';
 import './Filter.css';
-import { Query, QueryResult } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 
 
@@ -28,45 +28,64 @@ function submitSearchFilter( event: React.FormEvent<HTMLFormElement>) : any {
     searchFilter = searchElement.value;
 }
 
-const nameSearch = (name: string) => (
-    <Query query={gql`
-        {
-          nameSearch(name: $name){
-            id
+const GET_PERSON = gql`
+    query nameSearch($name: String!){
+        nameSearch(name: $name){
             first_name
             last_name
             location
-            age
             description
-          }
         }
-    `}>
-      {(result: QueryResult) => {
-        
-        if (result.loading) {
-          console.log("loading");
-          return <p>Loading </p>;
-        }
-        if (result.error) {
-          console.log("error");
-    
-          return <p>{`${result.error}`} </p>;
-        }
+    }
+`;
+
+interface Person {
+    id: number;
+    first_name: string;
+    last_name: string;
+    age: number;
+    location: string;
+    description: string;
+  }
   
-        return result.data.nameSearch.map(({first_name, last_name, location, age, description}:any) => (
-            console.log(first_name, last_name, age, location, description)
-        ));}}
-    </Query>
-   );
+interface Persons {
+    rocketInventory: Person[];
+}
+
+interface PersonName {
+    name: string;
+}
+
+/*function FindPeople(searchedName: String) {
+    const { loading, data, error } = useQuery(
+        GET_PERSON,
+        { variables: { name: searchedName } }
+    );
+    if(loading){console.log("loading")};
+    if(error){console.log(error)};
+    console.log(data);
+    return (
+      <div></div>)  
+}*/
 
 export function Filter() : any {
-    
+    const { loading, data, error } = useQuery(
+        GET_PERSON,
+        { variables: { name: "oe" } }
+    );
+    if(loading){console.log("loading")};
+    if(error){console.log(error)};
+    console.log(data);
     return (
         <div>  
             <div className="search-container">
-                <form onSubmit= {submitSearchFilter}>
-                    <input id="search" type = "text" className="search" placeholder = "Search ..."/>
-                    <input type="submit" className="search-button" value="Go" />
+                <form onSubmit={(event) => {
+                    event.preventDefault();
+                    let name : HTMLInputElement = document.getElementById("nameSearch") as HTMLInputElement;
+                    //FindPeople(name.value);
+                    }}>
+                    <input type = "text" id="nameSearch" className="search" placeholder = "Search ..."></input>
+                    <button type="submit">Search</button>
                 </form>
             </div>    
             <div className = "dropdown-age">
