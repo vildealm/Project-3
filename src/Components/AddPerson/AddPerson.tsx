@@ -4,25 +4,25 @@ import {PopUp} from './PopUp';
 
 export const AddPerson = () => {
       let [togglePop, setToggle] = useState(false);
-      let [text, setText] = useState('+ Add Person'); 
+      let [visible, setVisibility] = useState(''); 
       let [colorBtn, setColorBtn] = useState('#1aa6b7'); 
 
       const togglePopUp = (open: boolean) => {
             if(togglePop){
                   setToggle(togglePop = false);
-                  setText('+ Add Person');
                   setColorBtn('#1aa6b7'); 
+                  setVisibility(visible = '')
+
             }else{
                   setToggle(togglePop = true);
-                  setText('Close');
-                  setColorBtn(' #f56a79'); 
+                  setVisibility(visible = 'none'); 
             }
       }
       return (
             <div>
                   <div className="list-container">
                         <div className="popup-wrapper"> 
-                        <button className="addButton" onClick={() => togglePopUp(true)} style={{backgroundColor: colorBtn}}>{text}</button>
+                        <button className="addButton" onClick={() => togglePopUp(true)} style={{backgroundColor: colorBtn, display: visible}}>+ Add Person</button>
                               {togglePop ? <PopUp/> : null}
                         </div>
                   </div>
