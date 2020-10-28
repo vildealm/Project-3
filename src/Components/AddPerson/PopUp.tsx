@@ -4,20 +4,13 @@ import gql from 'graphql-tag';
 import { useMutation } from 'react-apollo';
 
 const ADD_PERSON = gql`
-  mutation register($firstname: String!, $lastname: String!, $age: Int!, $location: String!, $description: String!) {
-    addPerson(firstname: $firstname, lastname: $lastname, age: $age, location: $location, description: $description) {
-      user_id
-      first_name
-      last_name
-      age
-      location
-      description
-    }
+  mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
+    register(last_name: $last_name, first_name: $first_name, age: $age, location: $location, description: $description)
   }
 `;
 
 //$firstname: String!, $lastname: String!, $age: Int!, $location: String!, $description: String!)
-
+/*
 interface PersonInventory {
     user_id: number;
     first_name: string;
@@ -33,7 +26,7 @@ interface NewPersonDetails {
     age: number;
     location: string;
     description: string;
-}
+}*/
 
 export const PopUp = () => {
     const [first_name, setFirstName] = useState('');
@@ -43,7 +36,7 @@ export const PopUp = () => {
     const [description, setDesc] = useState('');
 
     const [addPerson, { error, data }] = useMutation(ADD_PERSON, 
-            {variables: {first_name, last_name, age: +age, location, description }});
+            {variables: {first_name: first_name, last_name: last_name, age: age, location: location, description: description}});
 
     return (
         <div>
