@@ -19,7 +19,7 @@ function App()  {
         <div className ="filter">
          <Filter />
         </div>
-        <div className="output"><Output/></div>
+       
         <div className = "addPerson"><AddPerson/></div>
       </div>
     </ApolloProvider>
