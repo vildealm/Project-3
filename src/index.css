@@ -1,6 +1,5 @@
 .header { grid-area: header; }
 .filter { grid-area: filter; }
-.output {grid-area: output; }
 .addPerson {grid-area: addPerson; }
 
 
@@ -33,7 +32,6 @@ code {
   grid-template-areas: "header header "
                         "filter filter"
                         "filter filter"
-                        "output output "
                         "addPerson addPerson";
 
   grid-template-rows: 20% 10% 10% 60%;  
@@ -59,22 +57,15 @@ p, h1, h2, h3{
   width: 100%;
 
 }
-
-.output{
-  margin: auto;
-  text-align: center;
-}
-  
-
 .header{
   text-align: center;
 }
+
 
 @media only screen and (max-width: 768px) {
   .grid-container{
     grid-template-areas:
       'header'
       'filter'
-      'output'
   }
 }

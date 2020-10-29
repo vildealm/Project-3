@@ -110,3 +110,8 @@
 .navigationButton:hover{
   cursor: pointer;
 }
+
+.personBox{
+  margin: auto;
+  width: 50%;
+}

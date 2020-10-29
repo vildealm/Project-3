@@ -239,7 +239,7 @@ export function Filter() : any {
                     <a onClick={()=> {setOrderBy("age");setPageNumber(0);setOrderOutput("Age");}}>Age</a>
                 </div>
             </div>
-            <div>
+            <div className="personBox">
                 {setPerson(checkStatus(activeFilter))}
             </div>
             <div>
