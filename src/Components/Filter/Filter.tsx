@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import './Filter.css';
-import { QueryResult, useLazyQuery } from 'react-apollo';
+import { QueryResult, useApolloClient, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Description, People } from '@material-ui/icons';
 import Person from '../Person/Person';
+import { useQuery } from 'react-apollo';
 
 let personCount : any ;
 
@@ -132,6 +133,18 @@ export function Filter() : any {
     const [age, setAge] = useState(0);
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
+    
+    const client = useApolloClient();
+    client.writeData({data:{added: false}} );
+    let PERSON_ADDED = gql`
+        query checkAdded {
+            added @client
+        }
+    `;
+    const {data} = useQuery(PERSON_ADDED);
+    
+
+    console.log(data.added);    
     
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
