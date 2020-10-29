@@ -11,7 +11,7 @@ function App()  {
     uri: 'http://localhost:4000',    
     cache: new InMemoryCache()
   });
-
+  
   return (
     <ApolloProvider client = {client}>
       <div className="grid-container">
