@@ -4,60 +4,69 @@ import './Filter.css';
 import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Description } from '@material-ui/icons';
+import Person from '../Person/Person';
 
 
-//dette er den valgte alderen det skal filtreres på
-/*let ageFilter; 
-let locationFilter : any; 
-let searchFilter : any; 
 
-function submitAgeFilter(event: React.FormEvent<HTMLFormElement>){
-    event.preventDefault();
-    let inputElement: HTMLInputElement = document.getElementById('number') as HTMLInputElement;
-    let value: string = inputElement.value;
-    ageFilter = parseInt(value);
-}
 
-function submitLocationFilter(location : string ) : any {
-    /*locationFilter = location;
-    const [age, setAge] = useState(0);
-    const [location, setLocation] = useState('');
-    const { loading, data, error } = useQuery(
-        FILTER_SEARCH,
-        { variables: { age: age, location: location } }
-    );
-}
 
-function SearchFilter( name: String) : any {
-    
-}*/
+function setPerson(queryResult: QueryResult){
 
-function sortDataAlpha(queryResult: QueryResult, sort: string){
+    let people : any = []; 
+    let ids : any = [];
+
     let person = {
+        id: Number,
         first_name: String,
         last_name: String,
         age: Number,
         location: String,
         description: String
     }
-    let people : typeof person[];
-    if(queryResult.data !== undefined){
-        queryResult.data.filterSearch.map(({first_name, last_name, age, location, description}: any) => {
+    let key = 0;
+    let stop : boolean = false;
+    if(queryResult.data !== undefined && !stop){
+        queryResult.data.nameSearch.map(({id, first_name, last_name, age, location, description}: any) => {
             console.log(first_name, last_name);
+            person.id= id;
             person.first_name = first_name;
             person.last_name = last_name;
             person.age = age;
             person.location = location;
             person.description = description;
             //people.push(person);
-            console.log(person);
+           
+            console.log(people);
+            if(!ids.includes(person.id)){
+            people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>
+                );
+            ids.push(person.id);
+            }
+
+            
         });
     }
-}
+   
+        return people;
+    }
 
 const GET_PERSON = gql`
     query nameSearch($name: String!, $orderBy: String!){
         nameSearch(name: $name, orderBy: $orderBy){
+            id
+            first_name
+            last_name
+            age
+            location
+            description
+        }
+    }
+`;
+
+const GET_ALL = gql`
+    query getAll( $orderBy: String!){
+        persons(orderBy: $orderBy){
+            id
             first_name
             last_name
             age
@@ -70,6 +79,7 @@ const GET_PERSON = gql`
 const FILTER_SEARCH = gql`
     query filterSearch($age: Int, $location: String, $orderBy: String!){
         filterSearch(filter: {age: $age, location: $location}, orderBy: $orderBy ){
+            id
             first_name
             last_name
             age
@@ -80,15 +90,26 @@ const FILTER_SEARCH = gql`
 `;
 
 export function Filter() : any {
-    const [activeFilter, setActiveFilter] = useState('');
+    const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [locationOutput, setLocationOutput] = useState('Location');
     const [orderOutput, setOrderOutput] = useState('Alphabetical');
     const [orderBy, setOrderBy] = useState('first_name')
+
+    const [firstName, setFirstName] = useState("hei");
+    const [lastName, setLastName] = useState("hei");
+    const [pAge, setPAge] = useState(12);
+    const [pLocation, setPLocation] = useState("");
+    const [pDescription, setPDescription] = useState("");
     
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy } }
+    );
+
+    const [getAll, allResults] = useLazyQuery(
+        GET_ALL,
+        { variables: { orderBy: orderBy } }
     );
 
     const [age, setAge] = useState(0);
@@ -98,6 +119,9 @@ export function Filter() : any {
         { variables: { age: age, location: location, orderBy: orderBy} });
     console.log(filterResults.data);
     console.log(nameResults.data);
+    
+    //setPerson(nameResults);
+
     return (
         <div>  
             <div className="search-container">
@@ -147,7 +171,9 @@ export function Filter() : any {
                     <a onClick={()=> {setOrderBy("first_name");setOrderOutput("Alphabetical");}}>Alphabetical</a>
                     <a onClick={()=> {setOrderBy("age");setOrderOutput("Age");}}>Age</a>
                 </div>
-
+                <div>
+                    {setPerson(nameResults)}
+                </div>
             </div>
         </div> 
     );
