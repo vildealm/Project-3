@@ -44,6 +44,23 @@ To handle queries and mutations in the fronend we use useLazyQuery and useMutati
 All of our sorting and filtering takes place in the backend. We use *TypeOrm's* built in functionality to do this. 
 It is able to sort either alphabetically by first_name or by age. It is possible to search for a name with the search field. It is also possible to filter by age, location, or both. It is not possible to both search and filter at the same time. It is however possible to sort no matter what kind of filters or searches you have applied. We learned about the *TypeOrm* documentation by reading [here](https://typeorm.io/#/find-options).
 
+# Testing
+Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi ikke hadde fanget opp tidligere. I tillegg brukte også Jest for enhetstesting og Cypress til end-to-end testing.
+
+## Cypress
+
+Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den går gjennom om noen av de mest sentrale funksjonene på side, og sørger for at vi får riktig respons.
+For å kjøre testene navigerer du til frontend og kjører i to terminalinstanser:
+
+`npm start`
+`npm run test:cypress`
+
+Testfilen heter sample_spec.js. 
+
+## Jest
+Vi benyttet Jest tester underveis i prosjektet for å enhetsteste prosjektet vårt. For å kjøre testene skriver man npm test i terminalen inne i frontend.
+Mot slutten av prosjektet har vi brukt cypress tester. 
+
 Links:
 - [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
 
