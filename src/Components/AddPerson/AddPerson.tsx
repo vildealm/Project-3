@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddPerson.css'; 
 import {PopUp} from './PopUp'; 
-//import Modal from 'react-modal'; 
+import Modal from 'react-modal'; 
 
 export const AddPerson = () => {
       let [togglePop, setToggle] = useState(false);
@@ -10,7 +10,7 @@ export const AddPerson = () => {
       let [popOpen, setPopOpen] = useState(true);
       const [modalIsOpen, setIsOpen] = React.useState(false);
 
-      Modal.setAppElement('#yourAppElement'); 
+      //Modal.setAppElement('#yourAppElement'); 
 
       function openModal() {
         setIsOpen(true);

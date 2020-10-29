@@ -5,9 +5,7 @@ import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Description } from '@material-ui/icons';
 import Person from '../Person/Person';
-
-
-
+import { checkDocument } from '@apollo/client/utilities';
 
 
 function setPerson(queryResult: QueryResult){
@@ -26,7 +24,7 @@ function setPerson(queryResult: QueryResult){
     let key = 0;
     let stop : boolean = false;
     if(queryResult.data !== undefined && !stop){
-        queryResult.data.nameSearch.map(({id, first_name, last_name, age, location, description}: any) => {
+        queryResult.data.persons.map(({id, first_name, last_name, age, location, description}: any) => {
             console.log(first_name, last_name);
             person.id= id;
             person.first_name = first_name;
@@ -34,25 +32,18 @@ function setPerson(queryResult: QueryResult){
             person.age = age;
             person.location = location;
             person.description = description;
-            //people.push(person);
-           
-            console.log(people);
             if(!ids.includes(person.id)){
-            people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>
-                );
+            people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
             ids.push(person.id);
             }
-
-            
         });
     }
-   
-        return people;
-    }
+    return people;
+}
 
-const GET_PERSON = gql`
-    query nameSearch($name: String!, $orderBy: String!){
-        nameSearch(name: $name, orderBy: $orderBy){
+const GET_ALL = gql`
+    query getAll( $orderBy: String!){
+        persons(orderBy: $orderBy){
             id
             first_name
             last_name
@@ -63,9 +54,9 @@ const GET_PERSON = gql`
     }
 `;
 
-const GET_ALL = gql`
-    query getAll( $orderBy: String!){
-        persons(orderBy: $orderBy){
+const GET_PERSON = gql`
+    query nameSearch($name: String!, $orderBy: String!){
+        nameSearch(name: $name, orderBy: $orderBy){
             id
             first_name
             last_name
@@ -95,25 +86,29 @@ export function Filter() : any {
     const [locationOutput, setLocationOutput] = useState('Location');
     const [orderOutput, setOrderOutput] = useState('Alphabetical');
     const [orderBy, setOrderBy] = useState('first_name')
-
-    const [firstName, setFirstName] = useState("hei");
-    const [lastName, setLastName] = useState("hei");
-    const [pAge, setPAge] = useState(12);
-    const [pLocation, setPLocation] = useState("");
-    const [pDescription, setPDescription] = useState("");
+    const [age, setAge] = useState(0);
+    const [location, setLocation] = useState('any');
     
-    const [searchName, nameResults] = useLazyQuery(
-        GET_PERSON,
-        { variables: { name: name, orderBy: orderBy } }
-    );
+    const checkStatus = (filter: String) => {
+        if(filter ===  "getAll"){
+            return allResults;
+        }
+        else if(filter === "nameSearch"){
+            return nameResults;
+        }
+        else{
+            return filterResults;
+        }
+    }
 
     const [getAll, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy } }
     );
-
-    const [age, setAge] = useState(0);
-    const [location, setLocation] = useState('any');
+    const [searchName, nameResults] = useLazyQuery(
+        GET_PERSON,
+        { variables: { name: name, orderBy: orderBy } }
+    );
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy} });
@@ -172,7 +167,7 @@ export function Filter() : any {
                     <a onClick={()=> {setOrderBy("age");setOrderOutput("Age");}}>Age</a>
                 </div>
                 <div>
-                    {setPerson(nameResults)}
+                    {setPerson(checkStatus(activeFilter))}
                 </div>
             </div>
         </div> 
