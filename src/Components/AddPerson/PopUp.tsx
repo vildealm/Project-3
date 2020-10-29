@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PopUp.css';
 import gql from 'graphql-tag';
-import { useMutation, useApolloClient } from 'react-apollo';
+import { useMutation } from 'react-apollo';
 const ADD_PERSON = gql`
   mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
     register(last_name: $last_name, first_name: $first_name, age: $age, location: $location, description: $description)
@@ -13,15 +13,14 @@ interface StateProps {
 }
 
 export const PopUp = (props: StateProps) => {
-    const client = useApolloClient();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [age, setAge] = useState(0);
-    const [location, setLoc] = useState('Dragvoll');
+    const [location, setLoc] = useState('Gløshaugen');
     const [description, setDesc] = useState('');
     const [addPerson, { error, data }] = useMutation(ADD_PERSON,
         { variables: { first_name: first_name, last_name: last_name, age: age, location: location, description: description } });
-
+    console.log(location);
     return (
         <div>
             <div className="overlay">
@@ -36,10 +35,10 @@ export const PopUp = (props: StateProps) => {
                         Lastname: <input type="text" onChange={(e) => setLastName(e.target.value)} maxLength={24} required />
                     </label>
                     <label>
-                        Age: <input type="number" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
+                        Age: <input type="number" min="1" max="1000" onChange={(e) => setAge(+e.target.value)} required />
                     </label>
                     <label>
-                        Location: <select onChange={(e) => setLoc(e.target.value)}>
+                        Location: <select onChange={(e) => setLoc(e.target.value)} defaultValue={location}>
                             <option value="Dragvoll">Dragvoll</option>
                             <option value="Gløshaugen">Gløshaugen</option>
                             <option value="Kalvskinnet">Kalvskinnet</option>
@@ -55,8 +54,7 @@ export const PopUp = (props: StateProps) => {
                         age &&
                         location &&
                         description &&
-                        addPerson() && 
-                        client.writeData({ data: { added: true}})&&
+                        addPerson() &&
                         props.setModalOpen(false)}>
                         Submit
                 </button>

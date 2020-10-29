@@ -134,7 +134,7 @@ export function Filter() : any {
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
     
-    const client = useApolloClient();
+    /*const client = useApolloClient();
     client.writeData({data:{added: false}} );
     let PERSON_ADDED = gql`
         query checkAdded {
@@ -144,7 +144,7 @@ export function Filter() : any {
     const {data} = useQuery(PERSON_ADDED);
     
 
-    console.log(data.added);    
+    console.log(data.added); */   
     
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
