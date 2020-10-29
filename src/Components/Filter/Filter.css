@@ -35,7 +35,7 @@
   padding: 14px;
   font-size: 20px;
   border: none;
-  width: 28vh;
+  width: 40vh;
 }
 
 .dropdown-age, .dropdown-location, .dropdown-sorting {
@@ -53,7 +53,7 @@
   display: none;
   position: absolute;
   background-color: #c2575e;
-  min-width: 28vh;
+  min-width: 40vh;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }

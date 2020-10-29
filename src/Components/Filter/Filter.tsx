@@ -28,7 +28,6 @@ function setPerson(queryResult: QueryResult){
     if(queryResult.data !== undefined){
         if(queryResult.data.persons !== undefined){
             queryResult.data.persons.map(({id, first_name, last_name, age, location, description}: any) => {
-                console.log(first_name, last_name);
                 person.id= id;
                 person.first_name = first_name;
                 person.last_name = last_name;
@@ -43,7 +42,6 @@ function setPerson(queryResult: QueryResult){
         }
         else if(queryResult.data.filterSearch !== undefined){
             queryResult.data.filterSearch.map(({id, first_name, last_name, age, location, description}: any) => {
-                console.log(first_name, last_name);
                 person.id= id;
                 person.first_name = first_name;
                 person.last_name = last_name;
@@ -58,7 +56,6 @@ function setPerson(queryResult: QueryResult){
         }
         else{
             queryResult.data.nameSearch.map(({id, first_name, last_name, age, location, description}: any) => {
-                console.log(first_name, last_name);
                 person.id= id;
                 person.first_name = first_name;
                 person.last_name = last_name;
@@ -151,10 +148,6 @@ export function Filter() : any {
         persons();
         }, []);
 
-    console.log(filterResults.data);
-    console.log(nameResults.data);
-    console.log(allResults.data);
-
     return (
         <div>  
             <div className="search-container">
@@ -182,7 +175,7 @@ export function Filter() : any {
                     setActiveFilter('filters');
                     filterSearch();}}>
                     <label className = "age-label" > Age: </label>
-                    <input className = "age" type="number" id="number" min="0" max="100"></input>
+                    <input className = "age" type="number" id="number" min="0" max="10000"></input>
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
@@ -192,10 +185,10 @@ export function Filter() : any {
                 <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
                     <a onClick={()=> {setLocation("any");setLocationOutput("Location");filterSearch();setActiveFilter('filters');}}>Any</a>
-                    <a onClick={()=> {setLocation("Trondheim");setLocationOutput("Trondheim");filterSearch();setActiveFilter('filters');}}>Trondheim</a>
-                    <a onClick={()=> {setLocation("Torino");setLocationOutput("Torino");filterSearch();setActiveFilter('filters');}}>Torino</a>
-                    <a onClick={()=> {setLocation("Oslo");setLocationOutput("Oslo");filterSearch();setActiveFilter('filters');}}>Oslo</a>
-                    <a onClick={()=> {setLocation("Washington");setLocationOutput("Washington");filterSearch();setActiveFilter('filters');}}>Washington</a>
+                    <a onClick={()=> {setLocation("Gløshaugen");setLocationOutput("Gløshaugen");filterSearch();setActiveFilter('filters');}}>Gløshaugen</a>
+                    <a onClick={()=> {setLocation("Dragvoll");setLocationOutput("Dragvoll");filterSearch();setActiveFilter('filters');}}>Dragvoll</a>
+                    <a onClick={()=> {setLocation("Handelshøyskolen");setLocationOutput("Handelshøyskolen");filterSearch();setActiveFilter('filters');}}>Handelshøyskolen</a>
+                    <a onClick={()=> {setLocation("Kalvskinnet");setLocationOutput("Kalvskinnet");filterSearch();setActiveFilter('filters');}}>Kalvskinnet</a>
                 </div>
             </div>
             <div className="dropdown-sorting">
