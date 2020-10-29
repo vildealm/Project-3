@@ -29,10 +29,16 @@ filterSearch: Array<IPerson | null> | null;
 
 interface INameSearchOnQueryArguments {
 name: string;
+orderBy: string;
+}
+
+interface IPersonsOnQueryArguments {
+orderBy: string;
 }
 
 interface IFilterSearchOnQueryArguments {
 filter?: IPersonFilter | null;
+orderBy: string;
 }
 
 interface IPerson {

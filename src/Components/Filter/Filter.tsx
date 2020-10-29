@@ -56,8 +56,8 @@ function sortDataAlpha(queryResult: QueryResult, sort: string){
 }
 
 const GET_PERSON = gql`
-    query nameSearch($name: String!){
-        nameSearch(name: $name){
+    query nameSearch($name: String!, $orderBy: String!){
+        nameSearch(name: $name, orderBy: $orderBy){
             first_name
             last_name
             age
@@ -68,8 +68,8 @@ const GET_PERSON = gql`
 `;
 
 const FILTER_SEARCH = gql`
-    query filterSearch($age: Int, $location: String){
-        filterSearch(filter: {age: $age, location: $location} ){
+    query filterSearch($age: Int, $location: String, $orderBy: String!){
+        filterSearch(filter: {age: $age, location: $location}, orderBy: $orderBy ){
             first_name
             last_name
             age
@@ -82,20 +82,20 @@ const FILTER_SEARCH = gql`
 export function Filter() : any {
     const [activeFilter, setActiveFilter] = useState('');
     const [name, setName] = useState('');
-    const[locationOutput, setLocationOutput] = useState('Location');
-    const[sortOutput, setSortOutput] = useState('Sort by');
-    const[sort, setSort] = useState('any');
+    const [locationOutput, setLocationOutput] = useState('Location');
+    const [orderOutput, setOrderOutput] = useState('Alphabetical');
+    const [orderBy, setOrderBy] = useState('first_name')
     
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
-        { variables: { name: name } }
+        { variables: { name: name, orderBy: orderBy } }
     );
 
     const [age, setAge] = useState(0);
     const [location, setLocation] = useState('any');
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
-        { variables: { age: age, location: location} });
+        { variables: { age: age, location: location, orderBy: orderBy} });
     console.log(filterResults.data);
     console.log(nameResults.data);
     return (
@@ -142,11 +142,10 @@ export function Filter() : any {
                 </div>
             </div>
             <div className="dropdown-sorting">
-                <button className="dropbtn">{sortOutput} ▼</button>
+                <button className="dropbtn">{orderOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={()=> {setSort("any");setSortOutput("Sort by");filterSearch();}}>Any</a>
-                    <a onClick={()=> {setSort("alphabetical");setSortOutput("Alphabetical");sortDataAlpha(filterResults, 'alphabetical')}}>Alphabetical</a>
-                    <a onClick={()=> {setSort("age");setSortOutput("Age");filterSearch();sortDataAlpha(filterResults, 'age')}}>Age</a>
+                    <a onClick={()=> {setOrderBy("first_name");setOrderOutput("Alphabetical");}}>Alphabetical</a>
+                    <a onClick={()=> {setOrderBy("age");setOrderOutput("Age");}}>Age</a>
                 </div>
 
             </div>

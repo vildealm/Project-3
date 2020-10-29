@@ -9,7 +9,7 @@ import Person from '../Person/Person';
 const Output = () => (
   <Query query={gql`
       {
-        persons{
+        persons(orderBy: "first_name"){
           id
           first_name
           last_name
@@ -26,6 +26,7 @@ const Output = () => (
       }
       if (result.error) {
         console.log("error");
+
         return <p>{`${result.error}`} </p>;
       }
       return result.data.persons.map(({first_name, last_name, location, age, description}:any) => (
