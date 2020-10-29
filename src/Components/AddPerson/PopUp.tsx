@@ -17,6 +17,8 @@ export const PopUp = () => {
     const [description, setDesc] = useState('');
     let [visible, setVisibility] = useState(''); 
 
+
+    
    
     const onClose =(close : boolean)=> {
         if(close){
@@ -36,7 +38,7 @@ export const PopUp = () => {
             {data && data.addPerson ? <p>Saved!</p> : null}
             <form className="form-popup" style={{display: visible}} onSubmit={(e) => {e.preventDefault()}}>
                 <label>
-                    Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)} maxLength={13} required/>  
+                    Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)} maxLength={20} required/>  
                 </label>
                 <label>
                     Lastname: <input type="text" onChange={(e) => setLastName(e.target.value)} maxLength={24} required/>

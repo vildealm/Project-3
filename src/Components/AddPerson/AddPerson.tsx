@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 import './AddPerson.css'; 
 import {PopUp} from './PopUp'; 
+//import Modal from 'react-modal'; 
 
 export const AddPerson = () => {
       let [togglePop, setToggle] = useState(false);
       let [visible, setVisibility] = useState(''); 
       let [colorBtn, setColorBtn] = useState('#1aa6b7'); 
       let [popOpen, setPopOpen] = useState(true);
-      let addBtn : HTMLButtonElement = document.getElementsByClassName("addButton") as unknown as HTMLButtonElement;
-   
+      const [modalIsOpen, setIsOpen] = React.useState(false);
+
+      Modal.setAppElement('#yourAppElement'); 
+
+      function openModal() {
+        setIsOpen(true);
+      }
+     
+      function afterOpenModal() {
+        setColorBtn( '#f00');
+      }
+     
+      function closeModal(){
+        setIsOpen(false);
+      }
 
       const togglePopUp = (open: boolean) => {
             if(togglePop){
