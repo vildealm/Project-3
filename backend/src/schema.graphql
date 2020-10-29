@@ -13,9 +13,9 @@ input personFilter{
 }
 
 type Query {
-    nameSearch(name: String!, orderBy: String!): [Person]
-    persons(orderBy: String!): [Person!]!
-    filterSearch(filter: personFilter, orderBy: String!): [Person]
+    nameSearch(name: String!, orderBy: String!, pageNumber: Int!): [Person]
+    persons(orderBy: String!, pageNumber: Int!): [Person!]!
+    filterSearch(filter: personFilter, orderBy: String!, pageNumber: Int!): [Person]
 }
 
 type Mutation{

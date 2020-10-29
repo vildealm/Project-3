@@ -4,10 +4,12 @@ import { Like } from "typeorm";
 
 export const resolvers: ResolverMap = {
     Query: {
-      persons: (_, {orderBy}: GQL.IPersonsOnQueryArguments) => {
+      persons: (_, {orderBy, pageNumber}: GQL.IPersonsOnQueryArguments) => {
         if(orderBy === 'first_name'){
           return Person.find(
             {
+              skip: pageNumber, 
+              take: 10, 
               order:{ first_name: 'ASC'}
             }
           )
@@ -15,66 +17,76 @@ export const resolvers: ResolverMap = {
         else{
           return Person.find(
             {
+              skip: pageNumber, 
+              take: 10, 
               order:{ age: 'ASC'}
             }
           )
         }
       },
-      filterSearch: (_, { filter, orderBy }: GQL.IFilterSearchOnQueryArguments) => {
+      filterSearch: (_, { filter, orderBy, pageNumber }: GQL.IFilterSearchOnQueryArguments) => {
         const age = filter?.age;
         const location = filter?.location;
         let persons;
         //Sorter alfabetisk på navn
         if(orderBy === 'first_name'){
           if(filter?.age && filter?.location && filter?.age !== 0 && filter?.location !== "any"){
-            persons = (Person.find({where:{ age, location }, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
           }
           else if((!filter?.location || filter?.location === "any") && filter?.age !== 0 ){
-            persons = (Person.find({where:{ age }, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ age }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
           }
           else if(filter?.location !== "any" && (!filter?.age || filter?.age === 0)){
-            persons = (Person.find({where:{ location }, order:{first_name: 'ASC'} }) );
+            persons = (Person.find({where:{ location }, skip: pageNumber, take: 10, order:{first_name: 'ASC'} }) );
           }
           else{
             persons = (Person.find({
-              order:{first_name: 'ASC'}
+              skip: pageNumber, take: 10, order:{first_name: 'ASC'}
             }));
           }
         }
         //sorter på alder
         else{
           if(filter?.age && filter?.location && filter?.age !== 0 && filter?.location !== "any"){
-            persons = (Person.find({where:{ age, location }, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ age, location }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
           }
           else if((!filter?.location || filter?.location === "any") && filter?.age !== 0 ){
-            persons = (Person.find({where:{ age }, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ age }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
           }
           else if(filter?.location !== "any" && (!filter?.age || filter?.age === 0)){
-            persons = (Person.find({where:{ location }, order:{ age: 'ASC'} }) );
+            persons = (Person.find({where:{ location }, skip: pageNumber, take: 10, order:{ age: 'ASC'} }) );
           }
           else{
             persons = (Person.find({
+              skip: pageNumber,
+              take: 10, 
               order:{ age: 'ASC'}
             }));
           }
         }
         return persons;
       },
-      nameSearch: async (_, { name, orderBy }: GQL.INameSearchOnQueryArguments) => {
+      nameSearch: async (_, { name, orderBy, pageNumber }: GQL.INameSearchOnQueryArguments) => {
         if(orderBy === 'first_name'){
           if(name.includes(" ")){ //søk med mer enn et ord
             let names = name.split(" ");
             const foundNames = await Person.find({where:[
               { first_name: Like(`%${names[0]}%`) }, //antar at det første ordet er et fornavn
               { last_name: Like(`%${names[names.length-1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
-           ], order:{first_name: 'ASC'}});
+           ],
+           skip: pageNumber,
+           take: 10, 
+           order:{first_name: 'ASC'}});
             return foundNames;
           }
           else{ //søk med et ord
             const persons = await Person.find({where:[
               { first_name: Like(`%${name}%`) },
               { last_name: Like(`%${name}%`) }
-           ], order:{first_name: 'ASC'}});
+            ],
+            skip: pageNumber,
+            take: 10, 
+            order:{first_name: 'ASC'}});
             return persons //returner alle resultater hvor søket er enten i fornavn eller etternavn
           }
         }
@@ -84,14 +96,19 @@ export const resolvers: ResolverMap = {
             const foundNames = await Person.find({where:[
               { first_name: Like(`%${names[0]}%`) }, //antar at det første ordet er et fornavn
               { last_name: Like(`%${names[names.length-1]}%`) } //antar at det andre ordet er et etternavn, tar ikke høyde for mer enn to ord i søket
-           ], order:{ age: 'ASC'}});
+            ],
+            skip: pageNumber,
+            take: 10,  order:{ age: 'ASC'}});
             return foundNames;
           }
           else{ //søk med et ord
             const persons = await Person.find({where:[
               { first_name: Like(`%${name}%`) },
               { last_name: Like(`%${name}%`) }
-           ], order:{ age: 'ASC'}});
+            ], 
+            skip: pageNumber,
+            take: 10, 
+            order:{ age: 'ASC'}});
             return persons //returner alle resultater hvor søket er enten i fornavn eller etternavn
           }
         }

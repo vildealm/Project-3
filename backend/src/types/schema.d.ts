@@ -20,27 +20,6 @@ line: number;
 column: number;
 }
 
-interface IQuery {
-__typename: "Query";
-nameSearch: Array<IPerson | null> | null;
-persons: Array<IPerson>;
-filterSearch: Array<IPerson | null> | null;
-}
-
-interface INameSearchOnQueryArguments {
-name: string;
-orderBy: string;
-}
-
-interface IPersonsOnQueryArguments {
-orderBy: string;
-}
-
-interface IFilterSearchOnQueryArguments {
-filter?: IPersonFilter | null;
-orderBy: string;
-}
-
 interface IPerson {
 __typename: "Person";
 id: number;
@@ -54,6 +33,30 @@ description: string;
 interface IPersonFilter {
 age?: number | null;
 location?: string | null;
+}
+
+interface IQuery {
+__typename: "Query";
+nameSearch: Array<IPerson | null> | null;
+persons: Array<IPerson>;
+filterSearch: Array<IPerson | null> | null;
+}
+
+interface INameSearchOnQueryArguments {
+name: string;
+orderBy: string;
+pageNumber: number;
+}
+
+interface IPersonsOnQueryArguments {
+orderBy: string;
+pageNumber: number;
+}
+
+interface IFilterSearchOnQueryArguments {
+filter?: IPersonFilter | null;
+orderBy: string;
+pageNumber: number;
 }
 
 interface IMutation {
