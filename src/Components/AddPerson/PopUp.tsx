@@ -17,7 +17,7 @@ export const PopUp = (props: StateProps) => {
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [age, setAge] = useState(0);
-    const [location, setLoc] = useState('');
+    const [location, setLoc] = useState('Dragvoll');
     const [description, setDesc] = useState('');
     const [addPerson, { error, data }] = useMutation(ADD_PERSON,
         { variables: { first_name: first_name, last_name: last_name, age: age, location: location, description: description } });
@@ -39,9 +39,9 @@ export const PopUp = (props: StateProps) => {
                         Age: <input type="number" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
                     </label>
                     <label>
-                        Location: <select onChange={(e) => setLoc(e.target.value)} defaultValue={location}>
-                            <option value="Gløshaugen">Gløshaugen</option>
+                        Location: <select onChange={(e) => setLoc(e.target.value)}>
                             <option value="Dragvoll">Dragvoll</option>
+                            <option value="Gløshaugen">Gløshaugen</option>
                             <option value="Kalvskinnet">Kalvskinnet</option>
                             <option value="Handelshøyskolen">Handelshøyskolen</option>
                             </select>
