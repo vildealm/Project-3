@@ -29,7 +29,6 @@ export const AddPerson = () => {
                         <div className="popup-wrapper"> 
                         <button className="addButton" onClick={() => togglePopUp(true)} style={{backgroundColor: colorBtn, display: visible}}>+ Add Person</button>
                               {togglePop ? <PopUp/> :  null}
-                              {popOpen ? addBtn : null}
                         </div>
                   </div>
             </div>
