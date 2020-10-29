@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Filter.css';
 import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -146,6 +146,11 @@ export function Filter() : any {
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy} });
+    
+    useEffect(() => {
+        persons();
+        }, []);
+
     console.log(filterResults.data);
     console.log(nameResults.data);
     console.log(allResults.data);
