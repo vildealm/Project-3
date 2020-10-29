@@ -211,8 +211,8 @@ export function Filter() : any {
                     setPageNumber(0);
                     setActiveFilter('nameSearch');
                     }}>
-                    <input type = "text" id="nameSearch" className="search" placeholder = "Search ..."></input>
-                    <button type="submit">Search</button>
+                    <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
+                    <button type="submit" className="submit-search">Search</button>
                 </form>
             </div>    
             <div className = "dropdown-age">

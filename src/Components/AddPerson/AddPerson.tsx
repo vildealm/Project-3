@@ -20,7 +20,7 @@ export const AddPerson = () => {
             <div>
                   <div className="list-container">
                         <div className="popup-wrapper">
-                              <button className="addButton" onClick={openModal}>+ Add Person</button>
+                              <button className="addButton" name="addButton" onClick={openModal}>+ Add Person</button>
                               <Modal
                                     isOpen={modalOpen}
                                     onRequestClose={closeModal}
