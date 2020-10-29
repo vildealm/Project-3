@@ -1,4 +1,8 @@
+.modal-component{
+  width: 20vh;
+  height: auto;
 
+}
 .form-popup { 
     background-color: #50a2ac;
     border: 3px solid #f1f1f1;

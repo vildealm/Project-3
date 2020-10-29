@@ -1,48 +1,34 @@
 import React, { useState } from 'react';
-import './AddPerson.css'; 
-import {PopUp} from './PopUp'; 
-import Modal from 'react-modal'; 
+import './AddPerson.css';
+import './PopUp.css'; 
+import { PopUp } from './PopUp';
+import Modal from 'react-modal';
+
+Modal.setAppElement('.app-container');
 
 export const AddPerson = () => {
-      let [togglePop, setToggle] = useState(false);
-      let [visible, setVisibility] = useState(''); 
-      let [colorBtn, setColorBtn] = useState('#1aa6b7'); 
-      let [popOpen, setPopOpen] = useState(true);
-      const [modalIsOpen, setIsOpen] = React.useState(false);
 
-      Modal.setAppElement('#yourAppElement'); 
-
+      const [modalOpen, setModalOpen] = useState(false);
       function openModal() {
-        setIsOpen(true);
-      }
-     
-      function afterOpenModal() {
-        setColorBtn( '#f00');
-      }
-     
-      function closeModal(){
-        setIsOpen(false);
+            setModalOpen(true);
       }
 
-      const togglePopUp = (open: boolean) => {
-            if(togglePop){
-                  setToggle(togglePop = false);
-                  setColorBtn('#1aa6b7'); 
-                  setVisibility(visible = '')
-                  setPopOpen(popOpen = false); 
-            }else{
-                  setToggle(togglePop = true);
-                  setVisibility(visible = 'none'); 
-                  setPopOpen(popOpen = true); 
-            }
+      function closeModal() {
+            setModalOpen(false);
       }
-
       return (
             <div>
                   <div className="list-container">
-                        <div className="popup-wrapper"> 
-                        <button className="addButton" onClick={() => togglePopUp(true)} style={{backgroundColor: colorBtn, display: visible}}>+ Add Person</button>
-                              {togglePop ? <PopUp/> :  null}
+                        <div className="popup-wrapper">
+                              <button className="addButton" onClick={openModal}>+ Add Person</button>
+                              <Modal
+                                    isOpen={modalOpen}
+                                    onRequestClose={closeModal}
+                                    contentLabel="Example Modal"
+                                    className="modal-component"
+                              > 
+                              <PopUp setModalOpen={setModalOpen}/>  
+                              </Modal>
                         </div>
                   </div>
             </div>
