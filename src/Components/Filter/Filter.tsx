@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react';
 import './Filter.css';
 import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Description } from '@material-ui/icons';
+import { Description, People } from '@material-ui/icons';
 import Person from '../Person/Person';
 
+let personCount : any ;
 
 function setPerson(queryResult: QueryResult){
 
     let people : any = []; 
+    
+
     let ids : any = [];
     let input : String; 
 
@@ -37,6 +40,7 @@ function setPerson(queryResult: QueryResult){
                 if(!ids.includes(person.id)){
                 people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
                 ids.push(person.id);
+                
                 }
             });
         }
@@ -69,7 +73,10 @@ function setPerson(queryResult: QueryResult){
             });
         }
     }
+    personCount = people.length;
     return people;
+    
+    
 }
 
 const GET_ALL = gql`
@@ -111,6 +118,11 @@ const FILTER_SEARCH = gql`
     }
 `;
 
+
+
+
+
+
 export function Filter() : any {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
@@ -148,6 +160,32 @@ export function Filter() : any {
     useEffect(() => {
         persons();
         }, []);
+
+
+    function nextPage(){
+        console.log("personCount = " + personCount)
+        console.log("pageCount = " + pageNumber)
+        if(personCount<10){
+            document.getElementById("buttonAppearNext")!.innerHTML = '';
+        }
+        if(personCount=10){
+            setPageNumber(pageNumber+10);
+            console.log("pageNumber = " + pageNumber);
+            if(pageNumber>=0){
+            document.getElementById("buttonAppear")!.innerHTML = 'Previous';
+            }    
+        } 
+    }
+
+    function previousPage(){
+        document.getElementById("buttonAppearNext")!.innerHTML = 'Next'
+        setPageNumber(pageNumber-10);
+        console.log(pageNumber)
+        if(pageNumber==10){
+            document.getElementById("buttonAppear")!.innerHTML = '';
+            }
+    }
+
 
     return (
         <div>  
@@ -201,9 +239,15 @@ export function Filter() : any {
                     <a onClick={()=> {setOrderBy("age");setPageNumber(0);setOrderOutput("Age");}}>Age</a>
                 </div>
             </div>
-            <div>
+            <div className="personBox">
                 {setPerson(checkStatus(activeFilter))}
             </div>
+            <div>
+                 <span id="buttonAppear" className="navigationButton" onClick={previousPage}></span>
+                 <span id="buttonAppearNext" className="navigationButton" onClick={nextPage}>Next</span>
+            </div>
         </div> 
+
     );
+
 }
