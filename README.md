@@ -74,11 +74,9 @@ To run the tests, navigate to the front end and run in two terminal instances:
 
 The test file is named end2end_spec.js.
 
-## Mocha
-We used Mocha for some simple unit testing. We decided to test the nextPage() and previousPage() functionality. There we test if the pageNumber has the correct
-values.
-To run the tests, write npm test in the terminal inside the front end.
-Towards the end of the project we have used cypress tests.
+## Jest Unit testing 
+
+We used Jest for some simple unit testing, which is found in the Filter folder. We decided to test a simple "renders without crashing" test on the <div  data-testid ="personBoxTest" >  in Filters.tsx. , just to execute a unit test in addition to the end-to-end testing. The div is rendered without crashing, hence giving a green "Passed" on the unit test. 
 
 
 Links:
