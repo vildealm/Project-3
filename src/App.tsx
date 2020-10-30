@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import { Filter } from './Components/Filter/Filter';
-import Output from './Components//Output/Output';
 import { AddPerson } from './Components/AddPerson/AddPerson';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo'; 

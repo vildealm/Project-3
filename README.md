@@ -12,6 +12,13 @@ TLDR;
 - npm start
 - ** new terminal 
 - npm start in main folder
+- npm install react-modal@3.11.2
+- npm install apollo-boost react-apollo graphql 
+
+
+# Overview 
+
+This application is a platform to find, add or search on students/employees at their given campus at NTNU. "Finder" lets you filter on location, age and name to find a given person, and due to a large number of people in the system, you can navigate through pages to find who you are looking for. If you, as a user, find the need to add yourself or others to the system, you can simply press Add Person to fill in and submit your wanted information. To make the search more smooth, you can sort the output either alphabetical or based on the users age. 
 
 ## Database
 
@@ -43,6 +50,10 @@ To handle queries and mutations in the fronend we use useLazyQuery and useMutati
 ## Sorting, filtering and pagination
 All of our sorting and filtering takes place in the backend. We use *TypeOrm's* built in functionality to do this. 
 It is able to sort either alphabetically by first_name or by age. It is possible to search for a name with the search field. It is also possible to filter by age, location, or both. It is not possible to both search and filter at the same time. It is however possible to sort no matter what kind of filters or searches you have applied. We learned about the *TypeOrm* documentation by reading [here](https://typeorm.io/#/find-options).
+
+# State management 
+
+Our team found it okay to communicate between the components without a lot of interaction with a state management instance, but in order to forfill the task requirement, we used our Apollo client for link state cache to store a variable called "Active". This variable lets us communicate with Filter.tsx to render the person-list again after adding a new person is added. 
 
 # Testing
 Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi ikke hadde fanget opp tidligere. I tillegg brukte også Jest for enhetstesting og Cypress til end-to-end testing.

@@ -119,7 +119,7 @@ const FILTER_SEARCH = gql`
 
 export function Filter(props: any) : any {
 
-
+//Hooks on setting given filter, (whether one is active or not), the given location and age that should be filtered on, and the chosen ordering. 
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [locationOutput, setLocationOutput] = useState('Location');
@@ -132,13 +132,18 @@ export function Filter(props: any) : any {
     const client = props.client;
     client.writeData({data:{added: false}} );
     
+
+//Query to get data from Apollo Link State 
     let PERSON_ADDED = gql`
         query checkAdded {
             added @client
         }
     `;
     const [checkIfAdded, addedResult] = useLazyQuery(PERSON_ADDED);
-      
+
+
+
+//Checking which filter is set, hence which result should be rendered.    
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
             return allResults;
@@ -151,6 +156,10 @@ export function Filter(props: any) : any {
         }
     }
 
+
+
+
+//Queries to get the instances based on the page number (10 pr page) 
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber } }
@@ -165,13 +174,17 @@ export function Filter(props: any) : any {
 
     console.log(addedResult.data);   
     
+
     useEffect(() => {
         persons();
         checkIfAdded();
         }, []);
     
-    
+    console.log(allResults.data)
+;
 
+
+//Functionality to see which instances (persons) that should be output, handling the onClick events on navigation buttons
     function nextPage(){
         console.log("personCount = " + personCount)
         console.log("pageCount = " + pageNumber)
@@ -228,7 +241,6 @@ export function Filter(props: any) : any {
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
-
 
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
