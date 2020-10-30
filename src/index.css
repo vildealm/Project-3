@@ -61,7 +61,7 @@ p, h1, h2, h3{
 .filter{
   margin: auto;
   text-align: center;
-  width: 100%;
+  float: center;
 
 }
 .header{

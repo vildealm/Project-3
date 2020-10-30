@@ -9,7 +9,7 @@
   border-radius: 0.2rem;
   background-color: rgb(253, 253, 253);
   border: none;
-  width: 30%;
+  width: 45%;
   border-bottom: 0.3rem solid transparent;
   height:0.5em;
   box-shadow: 2px 3px 8px #1a1d1a11;
@@ -67,8 +67,7 @@
 }
 
 .age {
-
-    margin: 0.55vw;
+    margin: 0.5vw;
     height: 2vw;
 }
 
@@ -109,5 +108,6 @@
 
 .personBox{
   margin: auto;
-  width: 50%;
+  text-align: center;
+  
 }
