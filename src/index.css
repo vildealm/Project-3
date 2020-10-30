@@ -31,7 +31,6 @@ code {
   height: 100vh;
   grid-template-areas: "header header "
                         "filter filter"
-                        "filter filter"
                         "addPerson addPerson";
 
   grid-template-rows: 20% 10% 10% 60%;  
@@ -45,7 +44,15 @@ code {
   padding: 0;
   background-color: #d9ecf2;
 }
-
+.header{
+  color:rgba(255, 255, 255, 0.966);
+  margin: auto;
+  text-decoration: none;
+  font-size: 1.5em; 
+  line-height: 4;
+  font-weight: lighter;
+  font-family: 'Montserrat', sans-serif;
+}
 
 p, h1, h2, h3{
   color: white;

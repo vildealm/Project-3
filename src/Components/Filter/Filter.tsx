@@ -210,7 +210,7 @@ export function Filter(props: any) : any {
     }
 
     return (
-        <div>  
+        <div >  
             <div className="search-container">
                 <form onSubmit={(event) => {
                     event.preventDefault();
@@ -223,6 +223,7 @@ export function Filter(props: any) : any {
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
                 </form>
             </div>    
+            <div >
             <div className = "dropdown-age">
                 <form onSubmit={(event) => {
                     event.preventDefault();
@@ -267,6 +268,7 @@ export function Filter(props: any) : any {
                  <span id="buttonAppearNext" className="navigationButton" onClick={nextPage}>Next</span>
             </div>
         </div> 
+        </div>
 
     );
 

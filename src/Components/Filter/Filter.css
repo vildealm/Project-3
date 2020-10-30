@@ -25,18 +25,17 @@
 .dropbtn {
   background-color: #cde0e6;
   color: #c2575e;
-  padding: 14px;
-  font-size: 20px;
+  padding: 0.5em;
+  font-size: 1.8vw;
   border: none;
-  width: 40vh;
+  width: 16vw;
 }
 
 .dropdown-age, .dropdown-location, .dropdown-sorting {
   position: relative;
   display: inline-block;
   margin: 0px 10px;
-  border-bottom: 3px #c2575e solid;
-  
+  border-bottom: 3px #c2575e solid;  
 }
 .dropdown-age, .dropdown-location, .dropdown-sorting:hover{
   cursor: pointer;
@@ -53,9 +52,10 @@
 
 .dropdownContent a {
   color: black;
-  padding: 12px 16px;
+  padding: 0.5em 0.5em;
   text-decoration: none;
   display: block;
+  font-size: 1.5vw;
 }
 
 .dropdownContent a:hover {
@@ -67,21 +67,22 @@
 }
 
 .age {
-  padding: 0.15em;
-  margin: 0.5em;
 
+    margin: 0.55vw;
+    height: 2vw;
 }
 
 .age-label{
  color: #c2575e;
- font-size: 20px;
+ font-size: 1.8vw;
+ width: 3vw;
 
 }
+
 .age-button {
-  font-size: 16px;
+  font-size: 0.7em;
   background-color: #c2575e;
   background-position: 10px 10px; 
-  padding: 5px 10px;
   box-shadow: 2px 3px 2px #1a1d1a27;
   border-radius: 100px;
   border-style: none;
