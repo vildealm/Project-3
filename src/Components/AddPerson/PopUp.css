@@ -1,7 +1,6 @@
 .modal-component{
   width: 20vh;
   height: auto;
-
 }
 .form-popup { 
     background-color: #50a2ac;
@@ -11,8 +10,8 @@
     box-shadow: 20px 40px 30px #4d4d4d;
     padding: 1em;
     position: fixed;
-    right: 1em;
-    top: 1em;
+    right: 5vw;
+    bottom: 5vw;
   }
   .form-popup input[type=text]{
     width: 30vh;

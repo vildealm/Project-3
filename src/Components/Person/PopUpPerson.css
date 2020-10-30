@@ -6,8 +6,8 @@
     box-shadow: 20px 40px 30px #4d4d4d;
     padding: 30px;
     position: fixed;
-    top: 15%;
-    left: 35%;
+    right: 5vw;
+    top: 5vw;
     justify-content: center;
     margin: auto;
 }
