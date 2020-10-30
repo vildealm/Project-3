@@ -20,18 +20,43 @@ line: number;
 column: number;
 }
 
+interface IPerson {
+__typename: "Person";
+id: number;
+last_name: string;
+first_name: string;
+age: number;
+location: string;
+description: string;
+}
+
+interface IPersonFilter {
+age?: number | null;
+location?: string | null;
+}
+
 interface IQuery {
 __typename: "Query";
-hello: string;
-getLocation: string | null;
+nameSearch: Array<IPerson | null> | null;
+persons: Array<IPerson>;
+filterSearch: Array<IPerson | null> | null;
 }
 
-interface IHelloOnQueryArguments {
-name?: string | null;
+interface INameSearchOnQueryArguments {
+name: string;
+orderBy: string;
+pageNumber: number;
 }
 
-interface IGetLocationOnQueryArguments {
-location: string;
+interface IPersonsOnQueryArguments {
+orderBy: string;
+pageNumber: number;
+}
+
+interface IFilterSearchOnQueryArguments {
+filter?: IPersonFilter | null;
+orderBy: string;
+pageNumber: number;
 }
 
 interface IMutation {
@@ -44,6 +69,7 @@ last_name: string;
 first_name: string;
 age: number;
 location: string;
+description: string;
 }
 }
 
