@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import './Filter.css';
-import { QueryResult, useApolloClient, useLazyQuery } from 'react-apollo';
+import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import Person from '../Person/Person';
 
@@ -70,6 +70,10 @@ function setPerson(queryResult: QueryResult){
     }
     personCount = people.length;
     return people; 
+}
+
+const getPeopleLength = (people:[]) => {
+    return people.length;
 }
 
 const GET_ALL = gql`
@@ -164,20 +168,23 @@ export function Filter(props: any) : any {
         checkIfAdded();
         
         }, []);
-    
-    console.log(allResults.data);
+
+    function checkPage(){
+        document.getElementById("buttonAppear")!.innerHTML = '';
+        console.log(getPeopleLength(setPerson(checkStatus(activeFilter))));
+        if(getPeopleLength(setPerson(checkStatus(activeFilter)))<10){
+            document.getElementById("buttonAppearNext")!.innerHTML = '';
+        }
+    }
 
 
 //Functionality to see which instances (persons) that should be output, handling the onClick events on navigation buttons
     function nextPage(){
-        console.log("personCount = " + personCount)
-        console.log("pageCount = " + pageNumber)
         if(personCount<10){
             document.getElementById("buttonAppearNext")!.innerHTML = '';
         }
         if(personCount===10){
             setPageNumber(pageNumber+10);
-            console.log("pageNumber = " + pageNumber);
             if(pageNumber>=0){
             document.getElementById("buttonAppear")!.innerHTML = 'Previous';
             }    
@@ -187,7 +194,6 @@ export function Filter(props: any) : any {
     function previousPage(){
         document.getElementById("buttonAppearNext")!.innerHTML = 'Next'
         setPageNumber(pageNumber-10);
-        console.log(pageNumber)
         if(pageNumber===10){
             document.getElementById("buttonAppear")!.innerHTML = '';
             }
@@ -201,7 +207,7 @@ export function Filter(props: any) : any {
                     setName(name.value);
                     searchName();
                     setPageNumber(0);
-                    
+                    checkPage();
                     setActiveFilter('nameSearch');
                     }}>
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
