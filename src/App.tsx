@@ -17,7 +17,7 @@ function App()  {
       <div className="grid-container">
          <div className = "header"> <h1 > Finder </h1></div>
         <div className ="filter">
-         <Filter />
+         <Filter client = {client}/>
         </div>
         <div className = "addPerson"><AddPerson/></div>
       </div>

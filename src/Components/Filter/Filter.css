@@ -1,33 +1,29 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
 
 
-.search{
-  border-radius: 100px;
-  font-size: 16px;
-  text-align: center;
-   width:50vw;
-   height: 5vh;
-   border-width: thin;
-   margin-bottom: 3em;
+.search-field{
+  font-size: 0.6em;
+  color: rgba(32, 32, 32, 0.966);
+  margin: 2em auto;
+  padding: 1.2rem 1.2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(253, 253, 253);
+  border: none;
+  width: 30%;
+  border-bottom: 0.3rem solid transparent;
+  height:0.5em;
+  box-shadow: 2px 3px 8px #1a1d1a11;
+  opacity:0.8;
+ 
 }
 
-.search:focus{
+.search-field:focus{
   outline:none;
+  opacity:1;
+  box-shadow: 2px 3px 8px #05050523;
 }
 
-.search-button {
-  font-size: 16px;
-  background-color: #ffffff;
-  padding: 10px 16px;
-  color: black;
-  margin-left: 1em;
-  border-style: none;
-  box-shadow: 2px 3px 2px #1a1d1a11;
 
-}
-.search-button:hover{
-  cursor: pointer;
-}
 
 .dropbtn {
   background-color:#d9ecf2;

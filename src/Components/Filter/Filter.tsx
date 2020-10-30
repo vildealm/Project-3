@@ -7,6 +7,8 @@ import Person from '../Person/Person';
 
 let personCount : any ;
 
+
+
 function setPerson(queryResult: QueryResult){
 
     let people : any = []; 
@@ -115,11 +117,9 @@ const FILTER_SEARCH = gql`
 `;
 
 
+export function Filter(props: any) : any {
 
 
-
-
-export function Filter() : any {
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [locationOutput, setLocationOutput] = useState('Location');
@@ -129,7 +129,8 @@ export function Filter() : any {
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
     
-    const client = useApolloClient();
+    const client = props.client;
+    client.writeData({data:{added: false}} );
     
     let PERSON_ADDED = gql`
         query checkAdded {
@@ -138,7 +139,6 @@ export function Filter() : any {
     `;
     const [checkIfAdded, addedResult] = useLazyQuery(PERSON_ADDED);
       
-    
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
             return allResults;
@@ -162,15 +162,15 @@ export function Filter() : any {
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });
+
+    console.log(addedResult.data);   
     
     useEffect(() => {
         persons();
-        client.writeData({data:{added: false}} );
         checkIfAdded();
         }, []);
-
     
-    console.log(addedResult.data); 
+    
 
     function nextPage(){
         console.log("personCount = " + personCount)
@@ -196,7 +196,6 @@ export function Filter() : any {
             }
     }
 
-
     return (
         <div>  
             <div className="search-container">
@@ -209,7 +208,6 @@ export function Filter() : any {
                     setActiveFilter('nameSearch');
                     }}>
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
-                    <button type="submit" className="submit-search">Search</button>
                 </form>
             </div>    
             <div className = "dropdown-age">
