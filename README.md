@@ -60,8 +60,13 @@ Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi
 
 ## Cypress
 
-Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den tester de viktigste funksjonaliteten på siden som søk-funksjonaliteten, om personen som ble lagt til i formen faktisk blir lagt til i databasen, i tillegg til at 
-filtrering av alder viser kun personer som er 22 år. 
+Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den tester de viktigste funksjonaliteten på siden som søk-funksjonaliteten, om personen som ble lagt til i formen faktisk blir lagt til i databasen, i tillegg til å
+sjekke at en person blir lagt til. 
+Den eneste formen for brukergenererte data som tas inn er personer. Vi har derfor en test som sjekker at formen må være fylt ut med riktige verdier for å kunne opprette bruker. I tillegg har vi også en test som sjekker at 
+anmeldelsen som ble skrevet faktisk ligger i databasen. 
+
+Vi har også en test som tester søkefeltet. Den sjekker at man faktisk får frem riktig søkeresultat når man utfører et søk, og også en som sjekker at man 
+får en beskjed om at et søk ikke har noen treff dersom man søker etter noe som ikke ligger i databasen. 
 For å kjøre testene navigerer du til frontend og kjører i to terminalinstanser:
 
 `npm start`
