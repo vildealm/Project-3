@@ -4,7 +4,7 @@ import './PopUp.css';
 import { PopUp } from './PopUp';
 import Modal from 'react-modal';
 
-Modal.setAppElement('.app-container');
+
 
 export const AddPerson = () => {
 
@@ -16,6 +16,8 @@ export const AddPerson = () => {
       function closeModal() {
             setModalOpen(false);
       }
+
+      Modal.setAppElement('.app-container');
       return (
             <div>
                   <div className="list-container">
