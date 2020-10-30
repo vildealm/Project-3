@@ -35,7 +35,6 @@ function setPerson(queryResult: QueryResult){
                 if(!ids.includes(person.id)){
                 people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
                 ids.push(person.id);
-                
                 }
             });
         }
@@ -72,9 +71,6 @@ function setPerson(queryResult: QueryResult){
     return people; 
 }
 
-const getPeopleLength = (people:[]) => {
-    return people.length;
-}
 
 const GET_ALL = gql`
     query persons( $orderBy: String!, $pageNumber: Int!){
@@ -169,11 +165,15 @@ export function Filter(props: any) : any {
         
         }, []);
 
-    function checkPage(){
+
+    function removeButtons(){
         document.getElementById("buttonAppear")!.innerHTML = '';
-        console.log(getPeopleLength(setPerson(checkStatus(activeFilter))));
-        if(getPeopleLength(setPerson(checkStatus(activeFilter)))<10){
-            document.getElementById("buttonAppearNext")!.innerHTML = '';
+        document.getElementById("buttonAppearNext")!.innerHTML = '';
+    }
+
+    function checkButtons(){
+        if(personCount<10){
+            document.getElementById("buttonAppearNext")!.innerHTML = 'Next';
         }
     }
 
@@ -207,8 +207,8 @@ export function Filter(props: any) : any {
                     setName(name.value);
                     searchName();
                     setPageNumber(0);
-                    checkPage();
                     setActiveFilter('nameSearch');
+                    removeButtons();
                     }}>
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
                 </form>
@@ -226,6 +226,7 @@ export function Filter(props: any) : any {
                     }
                     setActiveFilter('filters');
                     setPageNumber(0);
+                    removeButtons();
                     filterSearch();}}>
                     <label className = "age-label" > Age: </label>
                     <input className = "age" type="number" id="number" min="0" max="100"></input>
@@ -235,18 +236,18 @@ export function Filter(props: any) : any {
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={()=> {setLocation("any");setPageNumber(0);setLocationOutput("Location");filterSearch();setActiveFilter('filters');}}>Any</a>
-                    <a onClick={()=> {setLocation("Gløshaugen");setPageNumber(0);setLocationOutput("Gløshaugen");filterSearch();setActiveFilter('filters');}}>Gløshaugen</a>
-                    <a onClick={()=> {setLocation("Dragvoll");setPageNumber(0);setLocationOutput("Dragvoll");filterSearch();setActiveFilter('filters');}}>Dragvoll</a>
-                    <a onClick={()=> {setLocation("Handelshøyskolen");setPageNumber(0);setLocationOutput("Handelshøyskolen");filterSearch();setActiveFilter('filters');}}>Handelshøyskolen</a>
-                    <a onClick={()=> {setLocation("Kalvskinnet");setPageNumber(0);setLocationOutput("Kalvskinnet");filterSearch();setActiveFilter('filters');}}>Kalvskinnet</a>
+                    <a onClick={()=> {setLocation("any");setPageNumber(0);checkButtons();setLocationOutput("Location");filterSearch();setActiveFilter('filters');}}>Any</a>
+                    <a onClick={()=> {setLocation("Gløshaugen");setPageNumber(0);checkButtons();setLocationOutput("Gløshaugen");filterSearch();setActiveFilter('filters');}}>Gløshaugen</a>
+                    <a onClick={()=> {setLocation("Dragvoll");setPageNumber(0);checkButtons();setLocationOutput("Dragvoll");filterSearch();setActiveFilter('filters');}}>Dragvoll</a>
+                    <a onClick={()=> {setLocation("Handelshøyskolen");setPageNumber(0);checkButtons();setLocationOutput("Handelshøyskolen");filterSearch();setActiveFilter('filters');}}>Handelshøyskolen</a>
+                    <a onClick={()=> {setLocation("Kalvskinnet");setPageNumber(0);checkButtons();setLocationOutput("Kalvskinnet");filterSearch();setActiveFilter('filters');}}>Kalvskinnet</a>
                 </div>
             </div>
             <div className="dropdown-sorting">
                 <button className="dropbtn">{orderOutput} ▼</button>
                 <div className="dropdownContent">
-                    <a onClick={()=> {setOrderBy("first_name");setPageNumber(0);setOrderOutput("Alphabetical");}}>Alphabetical</a>
-                    <a onClick={()=> {setOrderBy("age");setPageNumber(0);setOrderOutput("Age");}}>Age</a>
+                    <a onClick={()=> {setOrderBy("first_name");setPageNumber(0);checkButtons();setOrderOutput("Alphabetical");}}>Alphabetical</a>
+                    <a onClick={()=> {setOrderBy("age");setPageNumber(0);checkButtons();setOrderOutput("Age");}}>Age</a>
                 </div>
             </div>
             <div data-testid ="personBoxTest" className="personBox">
