@@ -14,7 +14,6 @@ interface StateProps {
 
 export const PopUp = (props: StateProps) => {
 
-
     const client = useApolloClient();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
