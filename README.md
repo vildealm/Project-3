@@ -60,16 +60,22 @@ Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi
 
 ## Cypress
 
-Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den går gjennom om noen av de mest sentrale funksjonene på side, og sørger for at vi får riktig respons.
+Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den tester de viktigste funksjonaliteten på siden som søk-funksjonaliteten, om personen som ble lagt til i formen faktisk blir lagt til i databasen, i tillegg til å
+sjekke at en person blir lagt til. 
+Den eneste formen for brukergenererte data som tas inn er personer. Vi har derfor en test som sjekker at formen må være fylt ut med riktige verdier for å kunne opprette bruker. I tillegg har vi også en test som sjekker at 
+anmeldelsen som ble skrevet faktisk ligger i databasen. 
+
+Vi har også en test som tester søkefeltet. Den sjekker at man faktisk får frem riktig søkeresultat når man utfører et søk, og også en som sjekker at man 
+får en beskjed om at et søk ikke har noen treff dersom man søker etter noe som ikke ligger i databasen. 
 For å kjøre testene navigerer du til frontend og kjører i to terminalinstanser:
 
 `npm start`
 `npm run test:cypress`
 
-Testfilen heter sample_spec.js. 
+Testfilen heter end2end_spec.js. 
 
-## Jest
-Vi benyttet Jest tester underveis i prosjektet for å enhetsteste prosjektet vårt. For å kjøre testene skriver man npm test i terminalen inne i frontend.
+## Jest / Mocha
+Vi brukte Mocha til enhetsteste prosjektet vårt. Der valgte vi å teste nextPage() og previousPage() funksjonaliteten vår. For å kjøre testene skriver man npm test i terminalen inne i frontend.
 Mot slutten av prosjektet har vi brukt cypress tester. 
 
 Links:
