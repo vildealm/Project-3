@@ -55,34 +55,31 @@ It is able to sort either alphabetically by first_name or by age. It is possible
 
 Our team found it okay to communicate between the components without a lot of interaction with a state management instance, but in order to forfill the task requirement, we used our Apollo client for link state cache to store a variable called "Active". This variable lets us communicate with Filter.tsx to render the person-list again after adding a new person is added. This would also solve the problem of re-rendering a component without an infinite loop.  
 
-# Testing
-Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi ikke hadde fanget opp tidligere. I tillegg brukte også Jest for enhetstesting og Cypress til end-to-end testing.
+#Testing
+We have had one user test at the end of the project to detect errors that we had not detected before. In addition, Jest also used for device testing and Cypress for end-to-end testing.
 
 ## Cypress
 
-Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den tester de viktigste funksjonaliteten på siden som søk-funksjonaliteten, om personen som ble lagt til i formen faktisk blir lagt til i databasen, i tillegg til å
-sjekke at en person blir lagt til. 
-Den eneste formen for brukergenererte data som tas inn er personer. Vi har derfor en test som sjekker at formen må være fylt ut med riktige verdier for å kunne opprette bruker. I tillegg har vi også en test som sjekker at 
-anmeldelsen som ble skrevet faktisk ligger i databasen. 
+We use cypress for automated end-to-end testing of the project. It tests the most important functionality of the page as the search functionality, whether the person who was added to the form is actually added to the database, in addition to
+check that a person is being added.
+The only form of user-generated data that is taken in is people. We therefore have a test that checks that the form must be filled in with the correct values ​​in order to create a user. In addition, we also have a test that checks that
+the review that was written is actually in the database.
 
-Vi har også en test som tester søkefeltet. Den sjekker at man faktisk får frem riktig søkeresultat når man utfører et søk, og også en som sjekker at man 
-får en beskjed om at et søk ikke har noen treff dersom man søker etter noe som ikke ligger i databasen. 
-For å kjøre testene navigerer du til frontend og kjører i to terminalinstanser:
+We also have a test that tests the search field. It checks that you actually get the correct search result when you perform a search, and also one that checks that you
+gets a message that a search has no hits if you search for something that is not in the database.
+To run the tests, navigate to the front end and run in two terminal instances:
 
 `npm start`
-`npm run test:cypress`
+`npm run test: cypress`
 
-Testfilen heter end2end_spec.js. 
+The test file is named end2end_spec.js.
 
 ## Mocha
-Vi brukte Mocha til enhetsteste prosjektet vårt. Der valgte vi å teste nextPage() og previousPage() funksjonaliteten vår. For å kjøre testene skriver man npm test i terminalen inne i frontend.
-Mot slutten av prosjektet har vi brukt cypress tester. 
+We used Mocha for some simple unit testing. We decided to test the nextPage() and previousPage() functionality. There we test if the pageNumber has the correct
+values.
+To run the tests, write npm test in the terminal inside the front end.
+Towards the end of the project we have used cypress tests.
 
-Vi har også laget noen enkle enhetstester med Jest, som tester to av reducerne og sjekker at de oppdaterer statene riktig. 
-Der har vi to tester for hver av de to reducerne som sjekkes; courseReducer og toggleReducer. 
-For courseReducer testes det at dersom ingen action type sendes inn, så skal den returnere initialState, og 
-SEARCH_COURSE testes for å sjekke at text-staten blir oppdatert med det som sendes inn. For toggleReducer testes både 
-TOGGLE_FILTER og TOGGLE_MODAL, der staten for de aktuelle actionene blir det motsatte av det som sendes inn.
 
 Links:
 - [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
