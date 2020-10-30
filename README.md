@@ -16,7 +16,7 @@ TLDR;
 - npm install apollo-boost react-apollo graphql 
 
 
-# Overview 
+## Overview 
 
 This application is a platform to find, add or search on students/employees at their given campus at NTNU. "Finder" lets you filter on location, age and name to find a given person, and due to a large number of people in the system, you can navigate through pages to find who you are looking for. If you, as a user, find the need to add yourself or others to the system, you can simply press Add Person to fill in and submit your wanted information. To make the search more smooth, you can sort the output either alphabetical or based on the users age. 
 
@@ -86,6 +86,7 @@ Links:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -101,6 +102,10 @@ to run Apllo .
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+## Known bugs 
+
+For the buttons navigating forth and back, we are aware of the non functionality of «next» after searching for one specific user. Now, there is a button showing up, although it shouldn’t. If we had more time, we would have fixed this. In addition is the case sensitiveness for the search-field which is explained in " ## Filter"
 
 ### `npm test`
 
