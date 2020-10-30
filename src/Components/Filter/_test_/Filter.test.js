@@ -8,12 +8,13 @@ it( "renders without crashing", () => {
     ReactDOM.render(<div></div>, div)
 })
 
-describe('App component', ()=> {
+/*describe('App component', ()=> {
   it('renders the App-component', () => {
     const component = shallow(<App />);
     expect(component).toMatchSnapshot();
   });
 })
+*/
 
 
 /*it("renders button correctly", () => {
