@@ -42,9 +42,11 @@ For the backend we are using GraphQL. We also used TypeOrm, to be able to query 
 - In *resolvers.ts* we work out the functionality of all queries and mutations. Here we define what happens to the input, and how this is used to get what the user wants. 
 - In the folder "*types*" we have a file called schema.d.ts. This file is altered automatically based on *shema.graphql* when we run the commaned "*yarn gen-schema-types*". What this does is that it defines what the queries in resolvers are expected to take in, based on what we defined in *schema.graphql*.
 
+The reason our team went for graphQl is simply it's ability to fetch the wanted data instead of it all. 
+
 
 ## Server
-We use Apollo Server to connect our frontend to our backend. We define an ApolloClient in App.tsx, which connects to https://localhost:4000. Around all our content we wrap an ApolloProvider, which provides all content with our client. 
+We use Apollo Server to connect our frontend to our backend. The reason we chose Apollo provider, is that, after research and implementation of redux, we found it more intuitive to use a more simple interface. Redux seemes a bit ovekill, given the need of having reducers and actions, whereas Apollo with its provider and cache, makes it a bit more simple. We define an ApolloClient in App.tsx, which connects to https://localhost:4000. Around all our content we wrap an ApolloProvider, which provides all content with our client. 
 
 ## Queries and mutations in frontend
 To handle queries and mutations in the fronend we use useLazyQuery and useMutation, imported from '*react-apollo*'. We use lazy queries to be able to call them whenever we need them, no at once. All our queries are handled in Filter.tsx, while our mutation is handled in AddPerson.tsx. We learned about useQuery and useMutation from [this](https://www.apollographql.com/docs/react/development-testing/static-typing/) link, and the lazy queries from [this](https://www.apollographql.com/docs/react/data/queries/#executing-queries-manually) link. 
@@ -105,7 +107,8 @@ You will also see any lint errors in the console.
 
 ## Known bugs 
 
-For the buttons navigating forth and back, we are aware of the non functionality of «next» after searching for one specific user. Now, there is a button showing up, although it shouldn’t. If we had more time, we would have fixed this. In addition is the case sensitiveness for the search-field which is explained in " ## Filter"
+For the buttons navigating forth and back, we are aware of the non functionality of «next» after searching for one specific user. Now, there is a button showing up, although it shouldn’t. If we had more time, we would have fixed this. This leads to a stop in the database, which means that the "next" button showing up when there is less tahn 10 persons in the output, you should NOT press the button. 
+In addition is the case sensitiveness for the search-field which is explained in " ## Filter"
 
 ### `npm test`
 

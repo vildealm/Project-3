@@ -5,7 +5,7 @@ import { QueryResult, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import Person from '../Person/Person';
 
-let personCount : any ;
+let personCount : any = 2;
 
 function setPerson(queryResult: QueryResult){
 
@@ -148,13 +148,19 @@ export function Filter(props: any) : any {
 
 //Queries to get the instances based on the page number (10 pr page) 
     const [persons, allResults] = useLazyQuery(
+        
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber } }
+
     );
+
+    
+   
     const [searchName, nameResults] = useLazyQuery(
         GET_PERSON,
         { variables: { name: name, orderBy: orderBy, pageNumber: pageNumber } }
     );
+    
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });   
@@ -191,6 +197,7 @@ export function Filter(props: any) : any {
         } 
     }
 
+   
     function previousPage(){
         document.getElementById("buttonAppearNext")!.innerHTML = 'Next'
         setPageNumber(pageNumber-10);
@@ -199,6 +206,7 @@ export function Filter(props: any) : any {
             }
     }
     return (
+
         <div >  
             <div className="search-container">
                 <form onSubmit={(event) => {
