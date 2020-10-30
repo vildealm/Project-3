@@ -238,7 +238,7 @@ export function Filter(props: any) : any {
                     setPageNumber(0);
                     filterSearch();}}>
                     <label className = "age-label" > Age: </label>
-                    <input className = "age" type="number" id="number" min="0" max="10000"></input>
+                    <input className = "age" type="number" id="number" min="0" max="100"></input>
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
