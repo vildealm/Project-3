@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PopUp.css';
 import gql from 'graphql-tag';
-import { useMutation, useApolloClient } from 'react-apollo';
+import { useMutation, useApolloClient, useLazyQuery } from 'react-apollo';
 const ADD_PERSON = gql`
   mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
     register(last_name: $last_name, first_name: $first_name, age: $age, location: $location, description: $description)
@@ -13,6 +13,8 @@ interface StateProps {
 }
 
 export const PopUp = (props: StateProps) => {
+
+
     const client = useApolloClient();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
@@ -56,7 +58,8 @@ export const PopUp = (props: StateProps) => {
                         description &&
                         addPerson() &&
                         props.setModalOpen(false)&&
-                        client.writeData({data: {added: true}})}>
+                        client.writeData({data: {added: true}})}
+                        >
                         Submit
                 </button>
                 </form>

@@ -2,7 +2,6 @@
     box-shadow: 1px 6px 8px #0000002a;
     transition: all 0.3s ease-in-out;
     margin: 2em;
-    width: 40%;
     padding: 0.5em 6em 0.5em 6em;
     color: black;
     background-color: rgba(255, 255, 255, 0.185);
@@ -17,8 +16,6 @@
 
 }
 .age {
-    
     color: rgba(0, 0, 0, 0.37);
-    font-size: 0.7em;
-   
+    font-size: 0.7em;   
 }

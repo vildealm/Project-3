@@ -1,49 +1,41 @@
 /*inspired by https://www.w3schools.com/css/tryit.asp?filename=trycss_dropdown_text */
 
 
-.search{
-  border-radius: 100px;
-  font-size: 16px;
-  text-align: center;
-   width:50vw;
-   height: 5vh;
-   border-width: thin;
-   margin-bottom: 3em;
+.search-field{
+  font-size: 0.6em;
+  color: rgba(32, 32, 32, 0.966);
+  margin: 2em auto;
+  padding: 1.2rem 1.2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(253, 253, 253);
+  border: none;
+  width: 45%;
+  border-bottom: 0.3rem solid transparent;
+  height:0.5em;
+  box-shadow: 2px 3px 8px #1a1d1a11;
+  opacity:0.8;
 }
 
-.search:focus{
+.search-field:focus{
   outline:none;
-}
-
-.search-button {
-  font-size: 16px;
-  background-color: #ffffff;
-  padding: 10px 16px;
-  color: black;
-  margin-left: 1em;
-  border-style: none;
-  box-shadow: 2px 3px 2px #1a1d1a11;
-
-}
-.search-button:hover{
-  cursor: pointer;
+  opacity:1;
+  box-shadow: 2px 3px 8px #05050523;
 }
 
 .dropbtn {
-  background-color:#d9ecf2;
+  background-color: #cde0e6;
   color: #c2575e;
-  padding: 14px;
-  font-size: 20px;
+  padding: 0.5em;
+  font-size: 1.8vw;
   border: none;
-  width: 40vh;
+  width: 16vw;
 }
 
 .dropdown-age, .dropdown-location, .dropdown-sorting {
   position: relative;
   display: inline-block;
   margin: 0px 10px;
-  border-bottom: 3px #c2575e solid;
-  
+  border-bottom: 3px #c2575e solid;  
 }
 .dropdown-age, .dropdown-location, .dropdown-sorting:hover{
   cursor: pointer;
@@ -60,9 +52,10 @@
 
 .dropdownContent a {
   color: black;
-  padding: 12px 16px;
+  padding: 0.5em 0.5em;
   text-decoration: none;
   display: block;
+  font-size: 1.5vw;
 }
 
 .dropdownContent a:hover {
@@ -74,21 +67,21 @@
 }
 
 .age {
-  padding: 0.15em;
-  margin: 0.5em;
-
+    margin: 0.5vw;
+    height: 2vw;
 }
 
 .age-label{
  color: #c2575e;
- font-size: 20px;
+ font-size: 1.8vw;
+ width: 3vw;
 
 }
+
 .age-button {
-  font-size: 16px;
+  font-size: 0.7em;
   background-color: #c2575e;
   background-position: 10px 10px; 
-  padding: 5px 10px;
   box-shadow: 2px 3px 2px #1a1d1a27;
   border-radius: 100px;
   border-style: none;
@@ -106,6 +99,8 @@
   color: rgba(0, 0, 0, 0.87);
   text-decoration-line: underline;
   float: center;
+  margin-bottom: 4em;
+
 }
 .navigationButton:hover{
   cursor: pointer;
@@ -113,5 +108,6 @@
 
 .personBox{
   margin: auto;
-  width: 50%;
+  text-align: center;
+  
 }

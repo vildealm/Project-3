@@ -3,6 +3,8 @@ import './PopUpPerson.css';
 
 const imageText = require("../../icon/close.png") as string;
 
+//Functionality for the "Add-person popup"
+
 export const PopUpPerson = (props: any) => {
     let person = {
         first_name: String,

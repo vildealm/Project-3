@@ -21,6 +21,7 @@ const Person = (props: any) => {
         setPerson([props.first_name,props.last_name, props.age, props.location, props.description]);
     }, [setPerson, props]);
     return (
+
     <div className="person" onClick={()=> togglePopUp(true)}> 
     {togglePop ? <PopUpPerson 
                     first_name={props.first_name} 
@@ -29,8 +30,8 @@ const Person = (props: any) => {
                     age={props.age} 
                     description={props.description}
                 /> : null}
-                {props.first_name} {props.last_name} <p className = "age"> Age: {props.age}</p></div>
-    )
+                {props.first_name} {props.last_name} <p className = "age"> Age: {props.age}</p>
+    </div>    )
 }
 
 export default Person;

@@ -12,6 +12,13 @@ TLDR;
 - npm start
 - ** new terminal 
 - npm start in main folder
+- npm install react-modal@3.11.2
+- npm install apollo-boost react-apollo graphql 
+
+
+# Overview 
+
+This application is a platform to find, add or search on students/employees at their given campus at NTNU. "Finder" lets you filter on location, age and name to find a given person, and due to a large number of people in the system, you can navigate through pages to find who you are looking for. If you, as a user, find the need to add yourself or others to the system, you can simply press Add Person to fill in and submit your wanted information. To make the search more smooth, you can sort the output either alphabetical or based on the users age. 
 
 ## Database
 
@@ -44,21 +51,31 @@ To handle queries and mutations in the fronend we use useLazyQuery and useMutati
 All of our sorting and filtering takes place in the backend. We use *TypeOrm's* built in functionality to do this. 
 It is able to sort either alphabetically by first_name or by age. It is possible to search for a name with the search field. It is also possible to filter by age, location, or both. It is not possible to both search and filter at the same time. It is however possible to sort no matter what kind of filters or searches you have applied. We learned about the *TypeOrm* documentation by reading [here](https://typeorm.io/#/find-options).
 
+# State management 
+
+Our team found it okay to communicate between the components without a lot of interaction with a state management instance, but in order to forfill the task requirement, we used our Apollo client for link state cache to store a variable called "Active". This variable lets us communicate with Filter.tsx to render the person-list again after adding a new person is added. This would also solve the problem of re-rendering a component without an infinite loop.  
+
 # Testing
 Vi har hatt én brukertesting i slutten av prosjektet for å oppdage feil som vi ikke hadde fanget opp tidligere. I tillegg brukte også Jest for enhetstesting og Cypress til end-to-end testing.
 
 ## Cypress
 
-Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den går gjennom om noen av de mest sentrale funksjonene på side, og sørger for at vi får riktig respons.
+Vi benytter oss av cypress for automatisert end-to-end testing av prosjektet. Den tester de viktigste funksjonaliteten på siden som søk-funksjonaliteten, om personen som ble lagt til i formen faktisk blir lagt til i databasen, i tillegg til å
+sjekke at en person blir lagt til. 
+Den eneste formen for brukergenererte data som tas inn er personer. Vi har derfor en test som sjekker at formen må være fylt ut med riktige verdier for å kunne opprette bruker. I tillegg har vi også en test som sjekker at 
+anmeldelsen som ble skrevet faktisk ligger i databasen. 
+
+Vi har også en test som tester søkefeltet. Den sjekker at man faktisk får frem riktig søkeresultat når man utfører et søk, og også en som sjekker at man 
+får en beskjed om at et søk ikke har noen treff dersom man søker etter noe som ikke ligger i databasen. 
 For å kjøre testene navigerer du til frontend og kjører i to terminalinstanser:
 
 `npm start`
 `npm run test:cypress`
 
-Testfilen heter sample_spec.js. 
+Testfilen heter end2end_spec.js. 
 
-## Jest
-Vi benyttet Jest tester underveis i prosjektet for å enhetsteste prosjektet vårt. For å kjøre testene skriver man npm test i terminalen inne i frontend.
+## Jest / Mocha
+Vi brukte Mocha til enhetsteste prosjektet vårt. Der valgte vi å teste nextPage() og previousPage() funksjonaliteten vår. For å kjøre testene skriver man npm test i terminalen inne i frontend.
 Mot slutten av prosjektet har vi brukt cypress tester. 
 
 Links:

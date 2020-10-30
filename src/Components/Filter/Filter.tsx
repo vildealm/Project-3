@@ -7,6 +7,8 @@ import Person from '../Person/Person';
 
 let personCount : any ;
 
+
+
 function setPerson(queryResult: QueryResult){
 
     let people : any = []; 
@@ -115,11 +117,9 @@ const FILTER_SEARCH = gql`
 `;
 
 
+export function Filter(props: any) : any {
 
-
-
-
-export function Filter() : any {
+//Hooks on setting given filter, (whether one is active or not), the given location and age that should be filtered on, and the chosen ordering. 
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
     const [locationOutput, setLocationOutput] = useState('Location');
@@ -129,16 +129,21 @@ export function Filter() : any {
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
     
-    const client = useApolloClient();
+    const client = props.client;
+    client.writeData({data:{added: false}} );
     
+
+//Query to get data from Apollo Link State 
     let PERSON_ADDED = gql`
         query checkAdded {
             added @client
         }
     `;
     const [checkIfAdded, addedResult] = useLazyQuery(PERSON_ADDED);
-      
-    
+
+
+
+//Checking which filter is set, hence which result should be rendered.    
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
             return allResults;
@@ -151,6 +156,10 @@ export function Filter() : any {
         }
     }
 
+
+
+
+//Queries to get the instances based on the page number (10 pr page) 
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
         { variables: { orderBy: orderBy, pageNumber: pageNumber } }
@@ -162,16 +171,20 @@ export function Filter() : any {
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });
+
+    console.log(addedResult.data);   
     
+
     useEffect(() => {
         persons();
-        client.writeData({data:{added: false}} );
         checkIfAdded();
         }, []);
-
     
-    console.log(addedResult.data); 
+    console.log(allResults.data)
+;
 
+
+//Functionality to see which instances (persons) that should be output, handling the onClick events on navigation buttons
     function nextPage(){
         console.log("personCount = " + personCount)
         console.log("pageCount = " + pageNumber)
@@ -196,9 +209,8 @@ export function Filter() : any {
             }
     }
 
-
     return (
-        <div>  
+        <div >  
             <div className="search-container">
                 <form onSubmit={(event) => {
                     event.preventDefault();
@@ -209,9 +221,9 @@ export function Filter() : any {
                     setActiveFilter('nameSearch');
                     }}>
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
-                    <button type="submit" className="submit-search">Search</button>
                 </form>
             </div>    
+            <div >
             <div className = "dropdown-age">
                 <form onSubmit={(event) => {
                     event.preventDefault();
@@ -230,7 +242,6 @@ export function Filter() : any {
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
-
 
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
@@ -257,6 +268,7 @@ export function Filter() : any {
                  <span id="buttonAppearNext" className="navigationButton" onClick={nextPage}>Next</span>
             </div>
         </div> 
+        </div>
 
     );
 

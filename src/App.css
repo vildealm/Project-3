@@ -1,0 +1,9 @@
+.header{
+    color:rgba(255, 255, 255, 0.966);
+    margin: auto;
+    text-decoration: none;
+    font-size: 1.5em; 
+    line-height: 4;
+    font-weight: lighter;
+    font-family: 'Montserrat', sans-serif;
+}
