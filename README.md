@@ -12,6 +12,8 @@ TLDR;
 - npm start
 - ** new terminal 
 - npm start in main folder
+
+If by any chance something is not working, running these installs in the root folder separately solved the problems for us:
 - npm install react-modal@3.11.2
 - npm install apollo-boost react-apollo graphql 
 
