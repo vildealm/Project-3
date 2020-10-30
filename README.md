@@ -77,7 +77,7 @@ The test file is named end2end_spec.js.
 ## Jest Unit testing 
 
 We used Jest for some simple unit testing, which is found in the Filter folder. We decided to test a simple "renders without crashing" test on the <div  data-testid ="personBoxTest" >  in Filters.tsx. , just to execute a unit test in addition to the end-to-end testing. The div is rendered without crashing, hence giving a green "Passed" on the unit test. 
-
+We also tested with Snapshots. Snapshot testing is very useful when you want to check if the UI does not change. 
 
 Links:
 - [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
