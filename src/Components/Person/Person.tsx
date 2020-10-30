@@ -31,7 +31,7 @@ const Person = (props: any) => {
                     description={props.description}
                 /> : null}
                 {props.first_name} {props.last_name} <p className = "age"> Age: {props.age}</p>
-    </div>    )
+    </div>
+    )
 }
-
 export default Person;

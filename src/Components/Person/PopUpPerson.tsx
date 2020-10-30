@@ -4,7 +4,6 @@ import './PopUpPerson.css';
 const imageText = require("../../icon/close.png") as string;
 
 //Functionality for the "Add-person popup"
-
 export const PopUpPerson = (props: any) => {
     let person = {
         first_name: String,
@@ -20,7 +19,7 @@ export const PopUpPerson = (props: any) => {
     person.description = props.description;
     return(
         <div className="popUp">
-            <img src={imageText} /*onClick={() => return null/*setModalOpen(false)}*/ className='closeBtn' height="50" width="50" alt="closeButton"/>
+            <img src={imageText} className='closeBtn' height="50" width="50" alt="closeButton"/>
             <h2>{person.first_name} {person.last_name}</h2>
             <p>Age: {person.age}</p>
             <p>From: {person.location}</p>

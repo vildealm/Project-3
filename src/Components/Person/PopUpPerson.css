@@ -11,19 +11,16 @@
     justify-content: center;
     margin: auto;
 }
-
 .bio{
     font-weight: bolder;
 }
-
 .closeBtn{
     float: right;
     top: 0;
     right: 0;
     position: absolute;
     opacity: 0.3;
-}
-  
+} 
 .closeBtn:hover{
     opacity: 1;
 }

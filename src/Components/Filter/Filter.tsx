@@ -7,13 +7,10 @@ import Person from '../Person/Person';
 
 let personCount : any ;
 
-
-
 function setPerson(queryResult: QueryResult){
 
     let people : any = []; 
     let ids : any = [];
-
     let person = {
         id: Number,
         first_name: String,
@@ -72,9 +69,7 @@ function setPerson(queryResult: QueryResult){
         }
     }
     personCount = people.length;
-    return people;
-    
-    
+    return people; 
 }
 
 const GET_ALL = gql`
@@ -116,9 +111,7 @@ const FILTER_SEARCH = gql`
     }
 `;
 
-
 export function Filter(props: any) : any {
-
 //Hooks on setting given filter, (whether one is active or not), the given location and age that should be filtered on, and the chosen ordering. 
     const [activeFilter, setActiveFilter] = useState('getAll');
     const [name, setName] = useState('');
@@ -131,7 +124,6 @@ export function Filter(props: any) : any {
     
     const client = props.client;
     client.writeData({data:{added: false}} );
-    
 
 //Query to get data from Apollo Link State 
     let PERSON_ADDED = gql`
@@ -140,8 +132,6 @@ export function Filter(props: any) : any {
         }
     `;
     const [checkIfAdded, addedResult] = useLazyQuery(PERSON_ADDED);
-
-
 
 //Checking which filter is set, hence which result should be rendered.    
     const checkStatus = (filter: String) => {
@@ -156,9 +146,6 @@ export function Filter(props: any) : any {
         }
     }
 
-
-
-
 //Queries to get the instances based on the page number (10 pr page) 
     const [persons, allResults] = useLazyQuery(
         GET_ALL,
@@ -170,9 +157,7 @@ export function Filter(props: any) : any {
     );
     const [filterSearch, filterResults] = useLazyQuery(
         FILTER_SEARCH,
-        { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });
-
-    console.log(addedResult.data);       
+        { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });   
 
     useEffect(() => {
         persons();
@@ -180,8 +165,7 @@ export function Filter(props: any) : any {
         
         }, []);
     
-    console.log(allResults.data)
-;
+    console.log(allResults.data);
 
 
 //Functionality to see which instances (persons) that should be output, handling the onClick events on navigation buttons
@@ -208,7 +192,6 @@ export function Filter(props: any) : any {
             document.getElementById("buttonAppear")!.innerHTML = '';
             }
     }
-
     return (
         <div >  
             <div className="search-container">
@@ -242,7 +225,6 @@ export function Filter(props: any) : any {
                     <button type="submit" className = "age-button" > &rarr;</button>
                 </form>
             </div>      
-
             <div className="dropdown-location">
                 <button className="dropbtn">{locationOutput} ▼</button>
                 <div className="dropdownContent">
@@ -269,7 +251,5 @@ export function Filter(props: any) : any {
             </div>
         </div> 
         </div>
-
     );
-
 }

@@ -13,9 +13,7 @@
     position: fixed;
     right: 1em;
     top: 1em;
-  
   }
-
   .form-popup input[type=text]{
     width: 30vh;
     padding: 0.5em;
@@ -24,9 +22,7 @@
     background: #f1f1f1;
     width: 15em;
     border-radius: 10px;
-
   }
-
   .select {
     width: 27vh;
     padding: 0.5em;
@@ -35,9 +31,6 @@
     background: #f1f1f1;
     border-radius: 10px;
   }
-
-
-
   .form-popup input[type=number]{
     margin: auto;
     width: 30vh;
@@ -48,7 +41,6 @@
     width: 15em;
     border-radius: 10px;
   }
-
   .submit-form-btn {
     padding: 10px;
     margin: 20px 0;
@@ -56,9 +48,7 @@
     border-radius: 100px;
     box-shadow: 3px 4px 2px #1a1d1a38;
     border-style: none;
-
   }
-
   .submit-form-btn:hover{
     cursor: pointer;
     opacity: 0.8;

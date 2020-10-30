@@ -68,4 +68,3 @@ export const PopUp = (props: StateProps) => {
     );
 };
 
-// <input type="text" onChange={(e) => setLoc(e.target.value)} maxLength={24} required/>
