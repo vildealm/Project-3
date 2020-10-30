@@ -40,6 +40,8 @@ For the backend we are using GraphQL. We also used TypeOrm, to be able to query 
 - In *resolvers.ts* we work out the functionality of all queries and mutations. Here we define what happens to the input, and how this is used to get what the user wants. 
 - In the folder "*types*" we have a file called schema.d.ts. This file is altered automatically based on *shema.graphql* when we run the commaned "*yarn gen-schema-types*". What this does is that it defines what the queries in resolvers are expected to take in, based on what we defined in *schema.graphql*.
 
+The reason our team went for graphQl is simply it's ability to fetch the wanted data instead of it all. 
+
 
 ## Server
 We use Apollo Server to connect our frontend to our backend. The reason we chose Apollo provider, is that, after research and implementation of redux, we found it more intuitive to use a more simple interface. Redux seemes a bit ovekill, given the need of having reducers and actions, whereas Apollo with its provider and cache, makes it a bit more simple. We define an ApolloClient in App.tsx, which connects to https://localhost:4000. Around all our content we wrap an ApolloProvider, which provides all content with our client. 
