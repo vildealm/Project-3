@@ -74,9 +74,15 @@ For å kjøre testene navigerer du til frontend og kjører i to terminalinstanse
 
 Testfilen heter end2end_spec.js. 
 
-## Jest / Mocha
+## Mocha
 Vi brukte Mocha til enhetsteste prosjektet vårt. Der valgte vi å teste nextPage() og previousPage() funksjonaliteten vår. For å kjøre testene skriver man npm test i terminalen inne i frontend.
 Mot slutten av prosjektet har vi brukt cypress tester. 
+
+Vi har også laget noen enkle enhetstester med Jest, som tester to av reducerne og sjekker at de oppdaterer statene riktig. 
+Der har vi to tester for hver av de to reducerne som sjekkes; courseReducer og toggleReducer. 
+For courseReducer testes det at dersom ingen action type sendes inn, så skal den returnere initialState, og 
+SEARCH_COURSE testes for å sjekke at text-staten blir oppdatert med det som sendes inn. For toggleReducer testes både 
+TOGGLE_FILTER og TOGGLE_MODAL, der staten for de aktuelle actionene blir det motsatte av det som sendes inn.
 
 Links:
 - [GraphQL API with typeGraphQL and TypeORM](https://blog.logrocket.com/how-build-graphql-api-typegraphql-typeorm/)
