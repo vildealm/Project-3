@@ -37,10 +37,10 @@ export const PopUp = (props: StateProps) => {
                         Lastname: <input type="text" name="lname" onChange={(e) => setLastName(e.target.value)} maxLength={24} required />
                     </label>
                     <label>
-                        Age: <input type="number" name="age" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
+                        Age: &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <input type="number" name="age" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
                     </label>
-                    <label>
-                        Location: <select name="loc" onChange={(e) => setLoc(e.target.value)}>
+                    <label >
+                        Location:  &nbsp; <select  className = "select" name="loc" onChange={(e) => setLoc(e.target.value)}>
                             <option value="Dragvoll">Dragvoll</option>
                             <option value="Gløshaugen">Gløshaugen</option>
                             <option value="Kalvskinnet">Kalvskinnet</option>
@@ -48,7 +48,7 @@ export const PopUp = (props: StateProps) => {
                             </select>
                     </label>
                     <label>
-                        Bio: <input type="text" name="bio" onChange={(e) => setDesc(e.target.value)} maxLength={100} required />
+                        Bio: &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  <input type="text" name="bio" onChange={(e) => setDesc(e.target.value)} maxLength={100} required />
                     </label>
                     <button className="submit-form-btn" name="submit-form-btn"type="submit" onClick={() =>
                         first_name &&

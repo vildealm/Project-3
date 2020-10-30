@@ -172,12 +172,12 @@ export function Filter(props: any) : any {
         FILTER_SEARCH,
         { variables: { age: age, location: location, orderBy: orderBy, pageNumber: pageNumber} });
 
-    console.log(addedResult.data);   
-    
+    console.log(addedResult.data);       
 
     useEffect(() => {
         persons();
         checkIfAdded();
+        
         }, []);
     
     console.log(allResults.data)
