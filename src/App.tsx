@@ -14,7 +14,7 @@ function App()  {
   return (
     <ApolloProvider client = {client}>
       <div className="grid-container">
-         <div className = "header"> <h1 > Finder </h1></div>
+         <div className = "header"> <h1 className="header"> Finder </h1></div>
         <div className ="filter">
          <Filter client = {client}/>
         </div>
