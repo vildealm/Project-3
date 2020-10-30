@@ -70,7 +70,7 @@ For å kjøre testene navigerer du til frontend og kjører i to terminalinstanse
 Testfilen heter end2end_spec.js. 
 
 ## Jest / Mocha
-Vi benyttet Jest tester underveis i prosjektet for å enhetsteste prosjektet vårt. For å kjøre testene skriver man npm test i terminalen inne i frontend.
+Vi brukte Mocha til enhetsteste prosjektet vårt. Der valgte vi å teste nextPage() og previousPage() funksjonaliteten vår. For å kjøre testene skriver man npm test i terminalen inne i frontend.
 Mot slutten av prosjektet har vi brukt cypress tester. 
 
 Links:
