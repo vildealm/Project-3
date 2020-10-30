@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import './Filter.css';
-import { QueryResult, useLazyQuery } from 'react-apollo';
+import { QueryResult, useApolloClient, useLazyQuery } from 'react-apollo';
 import gql from 'graphql-tag';
-import { Description, People } from '@material-ui/icons';
 import Person from '../Person/Person';
 
 let personCount : any ;
@@ -11,10 +10,7 @@ let personCount : any ;
 function setPerson(queryResult: QueryResult){
 
     let people : any = []; 
-    
-
     let ids : any = [];
-    let input : String; 
 
     let person = {
         id: Number,
@@ -133,6 +129,16 @@ export function Filter() : any {
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
     
+    const client = useApolloClient();
+    
+    let PERSON_ADDED = gql`
+        query checkAdded {
+            added @client
+        }
+    `;
+    const [checkIfAdded, addedResult] = useLazyQuery(PERSON_ADDED);
+      
+    
     const checkStatus = (filter: String) => {
         if(filter ===  "getAll"){
             return allResults;
@@ -159,8 +165,12 @@ export function Filter() : any {
     
     useEffect(() => {
         persons();
+        client.writeData({data:{added: false}} );
+        checkIfAdded();
         }, []);
 
+    
+    console.log(addedResult.data); 
 
     function nextPage(){
         console.log("personCount = " + personCount)
@@ -168,7 +178,7 @@ export function Filter() : any {
         if(personCount<10){
             document.getElementById("buttonAppearNext")!.innerHTML = '';
         }
-        if(personCount=10){
+        if(personCount===10){
             setPageNumber(pageNumber+10);
             console.log("pageNumber = " + pageNumber);
             if(pageNumber>=0){
@@ -181,7 +191,7 @@ export function Filter() : any {
         document.getElementById("buttonAppearNext")!.innerHTML = 'Next'
         setPageNumber(pageNumber-10);
         console.log(pageNumber)
-        if(pageNumber==10){
+        if(pageNumber===10){
             document.getElementById("buttonAppear")!.innerHTML = '';
             }
     }

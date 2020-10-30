@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './PopUp.css';
 import gql from 'graphql-tag';
-import { useMutation } from 'react-apollo';
-
+import { useMutation, useApolloClient } from 'react-apollo';
 const ADD_PERSON = gql`
   mutation register($last_name: String!, $first_name: String!, $age: Int!, $location: String!, $description: String!) {
     register(last_name: $last_name, first_name: $first_name, age: $age, location: $location, description: $description)
@@ -14,14 +13,14 @@ interface StateProps {
 }
 
 export const PopUp = (props: StateProps) => {
+    const client = useApolloClient();
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
     const [age, setAge] = useState(0);
-    const [location, setLoc] = useState('Dragvoll');
+    const [location, setLoc] = useState('Gløshaugen');
     const [description, setDesc] = useState('');
     const [addPerson, { error, data }] = useMutation(ADD_PERSON,
         { variables: { first_name: first_name, last_name: last_name, age: age, location: location, description: description } });
-
     return (
         <div>
             <div className="overlay">
@@ -55,8 +54,9 @@ export const PopUp = (props: StateProps) => {
                         age &&
                         location &&
                         description &&
-                        addPerson() && 
-                        props.setModalOpen(false)}>
+                        addPerson() &&
+                        props.setModalOpen(false)&&
+                        client.writeData({data: {added: true}})}>
                         Submit
                 </button>
                 </form>
