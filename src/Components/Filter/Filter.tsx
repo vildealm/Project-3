@@ -201,6 +201,7 @@ export function Filter(props: any) : any {
                     setName(name.value);
                     searchName();
                     setPageNumber(0);
+                    
                     setActiveFilter('nameSearch');
                     }}>
                     <input type = "text" id="nameSearch" className="search-field" placeholder = "Search ..."></input>
@@ -242,11 +243,11 @@ export function Filter(props: any) : any {
                     <a onClick={()=> {setOrderBy("age");setPageNumber(0);setOrderOutput("Age");}}>Age</a>
                 </div>
             </div>
-            <div className="personBox">
+            <div data-testid ="personBoxTest" className="personBox">
                 {setPerson(checkStatus(activeFilter))}
             </div>
             <div>
-                 <span id="buttonAppear" className="navigationButton" onClick={previousPage}></span>
+                 <span data-testit ="nextButtonTest" id="buttonAppear" className="navigationButton" onClick={previousPage}></span>
                  <span id="buttonAppearNext" className="navigationButton" onClick={nextPage}>Next</span>
             </div>
         </div> 
