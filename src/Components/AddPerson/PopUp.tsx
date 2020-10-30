@@ -27,19 +27,19 @@ export const PopUp = (props: StateProps) => {
             <div className="overlay">
                 {error ? <p>Oh no! {error.message}</p> : null}
                 {data && data.addPerson ? <p>Saved!</p> : null}
-                <form className="form-popup" onSubmit={(e) => { e.preventDefault() }}>
+                <form className="form-popup" name="formAdd" onSubmit={(e) => { e.preventDefault() }}>
                     <h2> Add a person! </h2>
                     <label>
-                        Firstname: <input type="text" onChange={(e) => setFirstName(e.target.value)} maxLength={20} required />
+                        Firstname: <input type="text" name="fname" onChange={(e) => setFirstName(e.target.value)} maxLength={20} required />
                     </label>
                     <label>
-                        Lastname: <input type="text" onChange={(e) => setLastName(e.target.value)} maxLength={24} required />
+                        Lastname: <input type="text" name="lname" onChange={(e) => setLastName(e.target.value)} maxLength={24} required />
                     </label>
                     <label>
-                        Age: <input type="number" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
+                        Age: <input type="number" name="age" min="1" max="100" onChange={(e) => setAge(+e.target.value)} required />
                     </label>
                     <label>
-                        Location: <select onChange={(e) => setLoc(e.target.value)}>
+                        Location: <select name="loc" onChange={(e) => setLoc(e.target.value)}>
                             <option value="Dragvoll">Dragvoll</option>
                             <option value="Gløshaugen">Gløshaugen</option>
                             <option value="Kalvskinnet">Kalvskinnet</option>
@@ -47,9 +47,9 @@ export const PopUp = (props: StateProps) => {
                             </select>
                     </label>
                     <label>
-                        Bio: <input type="text" onChange={(e) => setDesc(e.target.value)} maxLength={100} required />
+                        Bio: <input type="text" name="bio" onChange={(e) => setDesc(e.target.value)} maxLength={100} required />
                     </label>
-                    <button className="submit-form-btn" type="submit" onClick={() =>
+                    <button className="submit-form-btn" name="submit-form-btn"type="submit" onClick={() =>
                         first_name &&
                         last_name &&
                         age &&

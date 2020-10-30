@@ -7,19 +7,38 @@ describe('Finder End2End', function () {
         cy.contains('Age')
     })
 
-describe('Tutorialspoint Test', function () {
+    describe('Tutorialspoint Test', function () {
         it('Test Case3', function () {
-            cy.visit('http://localhost:3000');   
+            cy.visit('http://localhost:3000');
             cy.get('button[name="addButton"]').click();
             cy.on('window:confirm', (text) => {
-                expect(text).to.contains('Add a person!');
+                expect(text).to.contains('You are submitting information to an external page.');
             })
         });
-        it('can submit a valid form', () => {
-            cy.get('form').submit()
-          })
     });
     
+
+describe('Test validation of form', () => {
+    beforeEach(() => {
+        cy.visit('http://localhost:3000')
+        cy.get('button[name="addButton"]').click();
+        cy.get('input[name="fname"]').type('Ola')
+        cy.get('input[name="lname"]').type('Nordmann')
+        cy.get('input[name="age"]').type('45')
+        cy.get('select').select('Kalvskinnet') 
+        cy.get('input[name="bio"]').type('Heia Norge')
+        cy.get('button[name="submit-form-btn"]').click();
+        cy.get('.submit-form-btn').submit()
+    })
+
+    it('displays form validation', () => {
+        cy.get('input[name="fname"]').clear()
+        cy.get('form').submit()
+        cy.get('input[name="fname"]').should('contain')
+    })
+
+})
+
     const query = `{
         persons(first_name, last_name)
         {
@@ -41,11 +60,4 @@ describe('Tutorialspoint Test', function () {
             })
         })
     })
-    /*
-    it('should display the correct person followed by opening pop up', () => {
-        cy.get('input').should('have.text', '').click().type('Vilde');
-        cy.get('Button.submit').should('have.value', 'SEARCH').click();
-        cy.get("Person").should('have.text', 'Vilde');
-        cy.get('h3#popTitle').should('have.text', 'Vilde');
-    })*/
 })
