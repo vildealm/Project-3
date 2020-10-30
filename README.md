@@ -50,7 +50,7 @@ To handle queries and mutations in the fronend we use useLazyQuery and useMutati
 ## Sorting, filtering and pagination
 All of our sorting and filtering takes place in the backend. We use *TypeOrm's* built in functionality to do this. 
 It is able to sort either alphabetically by first_name or by age. It is possible to search for a name with the search field. It is also possible to filter by age, location, or both. It is not possible to both search and filter at the same time. It is however possible to sort no matter what kind of filters or searches you have applied. We learned about the *TypeOrm* documentation by reading [here](https://typeorm.io/#/find-options).
-
+The search field is case sensitive, therefor you have to type in the exact name so that the correct person will show.
 # State management 
 
 Our team found it okay to communicate between the components without a lot of interaction with a state management instance, but in order to forfill the task requirement, we used our Apollo client for link state cache to store a variable called "Active". This variable lets us communicate with Filter.tsx to render the person-list again after adding a new person is added. This would also solve the problem of re-rendering a component without an infinite loop.  
