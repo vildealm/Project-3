@@ -33,8 +33,8 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
-                ids.push(person.id);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
+                    ids.push(person.id);
                 }
             });
         }
@@ -47,8 +47,8 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
-                ids.push(person.id);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
+                    ids.push(person.id);
                 }
             });
         }
@@ -61,8 +61,8 @@ function setPerson(queryResult: QueryResult){
                 person.location = location;
                 person.description = description;
                 if(!ids.includes(person.id)){
-                people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
-                ids.push(person.id);
+                    people.push(<Person first_name= {person.first_name} last_name = {person.last_name} location = {person.location} age= {person.age} description = {person.description}/>);
+                    ids.push(person.id);
                 }
             });
         }
@@ -117,7 +117,7 @@ export function Filter(props: any) : any {
     const [name, setName] = useState('');
     const [locationOutput, setLocationOutput] = useState('Location');
     const [orderOutput, setOrderOutput] = useState('Alphabetical');
-    const [orderBy, setOrderBy] = useState('first_name')
+    const [orderBy, setOrderBy] = useState('first_name');
     const [age, setAge] = useState(0);
     const [location, setLocation] = useState('any');
     const [pageNumber, setPageNumber] = useState(0);
